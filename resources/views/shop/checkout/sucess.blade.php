@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.shop')
 @section('content')
     <section class="bg-img1 txt-center p-lr-15 p-tb-40" style="background-image: url('{{ asset('images/bg-01.jpg') }}');">
 

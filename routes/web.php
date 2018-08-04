@@ -31,10 +31,19 @@ Route::group(['middleware' => 'auth:web'], function ()
     {
         Route::get('/','Shop\CustomerController@profile');
         Route::get('/account','Shop\CustomerController@account');
-        Route::get('/orders','Shop\OrderController@index');
         Route::post('/changePassword','Shop\CustomerController@changePassword')->name('changePassword');
         Route::post('/changeDataCustomer','Shop\CustomerController@changeDataCustomer')->name('changeDataCustomer');
+       // Orders Routes
+        Route::get('/orders','Shop\OrderController@index');
+        Route::get('order/{order}/upload','Shop\OrderController@showUpload');
+        Route::get('order/{order}','Shop\OrderController@show');
+        Route::post('order/{order}/upload','Shop\OrderController@upload');
+        Route::get('order/{order}/canceled','Shop\OrderController@canceled');
+        
     });
+
+    Route::get('/checkout', 'Shop\PaymentController@checkout');
+    Route::post('/checkout', 'Shop\PaymentController@sucess');
 });
 
 Auth::routes();

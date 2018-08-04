@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Shop;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use App\Customer;
 use Auth;
@@ -18,7 +19,7 @@ class PaymentController extends Controller
         $cart = Cart::content();
         $total = Cart::subtotal();
         $customer = Customer::findOrFail(Auth::user()->id);
-        return view('checkout.index',[
+        return view('shop.checkout.index',[
             'customer' => $customer,
             'cart' => $cart,
             'total' => $total
@@ -58,7 +59,7 @@ class PaymentController extends Controller
 
         Cart::destroy();        
         
-        return view('checkout.sucess');
+        return view('shop.checkout.sucess');
     }
 
 }
