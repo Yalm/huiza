@@ -10,16 +10,34 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+// Shop routes
+Route::get('/', 'Shop\ShopController@index');
+Route::get('/product/{product}', 'Shop\ShopController@show');
+Route::get('/shop','Shop\ShopController@shop');
+Route::get('/about', 'Shop\ShopController@about');
+Route::get('/contact', 'Shop\ShopController@contact');
+Route::post('/contact', 'Shop\ShopController@sendContact');
+Route::get('/shop/product','Shop\ShopController@search');
+Route::get('/shop/{name}','Shop\ShopController@searchCategory');
 
-Route::get('/', function () {
-    return view('welcome');
+// Shopping Cart Routes
+Route::resource('/cart','Shop\ShoppingCartController');
+Route::put('/cartEdit','Shop\ShoppingCartController@editCart');
+
+Route::group(['middleware' => 'auth:web'], function ()
+{
+    // Profile Customer Routes
+    Route::prefix('profile')->group(function () 
+    {
+        Route::get('/','Shop\CustomerController@profile');
+        Route::get('/account','Shop\CustomerController@account');
+        Route::get('/orders','Shop\OrderController@index');
+        Route::post('/changePassword','Shop\CustomerController@changePassword')->name('changePassword');
+        Route::post('/changeDataCustomer','Shop\CustomerController@changeDataCustomer')->name('changeDataCustomer');
+    });
 });
 
 Auth::routes();
-
-Route::group(['middleware'=>'auth:web'], function() 
-{
-});
 
 Route::get('/home', 'Ecommerce\HomeController@index')->name('home');
 

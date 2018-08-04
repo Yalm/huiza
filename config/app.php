@@ -154,6 +154,9 @@ return [
         /*
          * Application Service Providers...
          */
+        App\Providers\CartProvider::class,
+        App\Providers\CategoryProvider::class,
+
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
