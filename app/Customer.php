@@ -26,4 +26,15 @@ class Customer extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function verifyCustomer()
+    {
+        return $this->hasOne(VerifyCustomer::class);
+    }
+
+    public function orders()
+    {
+      return $this->hasMany(Order::class);
+  
+    }
 }

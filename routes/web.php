@@ -38,6 +38,9 @@ Route::group(['middleware' => 'auth:web'], function ()
 });
 
 Auth::routes();
+Route::get('/customer/verify/{token}', 'Auth\RegisterController@verifyCustomer');
+Route::get('/resend','Auth\ResendEmailController@resend');
+Route::post('/resend','Auth\ResendEmailController@resendEmail')->name('resend');
 
 Route::get('/home', 'Ecommerce\HomeController@index')->name('home');
 

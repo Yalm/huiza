@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
+use App\VerifyCustomer;
+use App\Mail\VerifyMail;
+use Mail;
+use Illuminate\Http\Request;
+
 class RegisterController extends Controller
 {
     /*
@@ -63,10 +68,53 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return Customer::create([
+        $customer =  Customer::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+
+        $verifyCustomer = VerifyCustomer::create([
+            'customer_id' => $customer->id,
+            'token' => str_random(40)
+        ]);
+ 
+        Mail::to($customer->email)->send(new VerifyMail($customer));
+ 
+        return $customer;
+
+    }
+    public function verifyCustomer($token)
+    {
+        $verifyCustomer = VerifyCustomer::where('token', $token)->first();
+        if(isset($verifyCustomer))
+        {
+            $customer = $verifyCustomer->customer;
+            if(!$customer->verified) 
+            {
+                $verifyCustomer->customer->verified = 1;
+                $verifyCustomer->customer->save();
+                $status = "Su correo electrónico esta verificado Ahora puede iniciar sesión.";
+            }
+            else
+            {
+                $status = "Su correo electrónico ya está verificado Ahora puede iniciar sesión.";
+            }
+        }
+        else
+        {
+            return redirect('/login')
+                    ->with('warning', "Lo siento, su correo electrónico no puede ser identificado.");
+        }
+ 
+        return redirect('/login')->with('status', $status);
+    }
+
+    
+    protected function registered(Request $request, $user)
+    {
+        $this->guard()->logout();
+        return redirect('/login')
+                ->with('status', 'Le enviamos un código de activación. Verifique su correo electrónico y haga clic en el enlace para verificar.');
     }
 }

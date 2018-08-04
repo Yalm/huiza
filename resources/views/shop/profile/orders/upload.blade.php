@@ -1,4 +1,4 @@
-@extends('profile.layout')
+@extends('shop.profile.layout')
 @section('mycssfile')
 <link rel="stylesheet" type="text/css" href="{{ asset('vendor/dropify/dropify.min.css')}}">
 @endsection

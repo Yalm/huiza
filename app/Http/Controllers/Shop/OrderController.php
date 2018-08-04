@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Shop;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use App\Order;
 use Image;
 use Gloudemans\Shoppingcart\Facades\Cart;
@@ -14,7 +15,7 @@ class OrderController extends Controller
         $customer = Auth('web')->user();
         $orders = Order::where('customer_id',$customer->id)->paginate(4);
 
-        return view('profile.orders.index',[
+        return view('shop.profile.orders.index',[
             'orders' => $orders
         ]);
     }
@@ -22,7 +23,7 @@ class OrderController extends Controller
     public function showUpload($id)
     {
         $order = Order::find($id);
-        return view('profile.orders.upload',[
+        return view('shop.profile.orders.upload',[
             'order' => $order
         ]);
     }
@@ -56,7 +57,7 @@ class OrderController extends Controller
     public function show($id)
     {
         $order = Order::find($id);
-        return view('profile.orders.show',[
+        return view('shop.profile.orders.show',[
             'order' => $order,
         ]);
     }

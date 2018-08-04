@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Shop;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use App\Customer;
 use Auth;
 use Hash;
@@ -12,14 +13,14 @@ class CustomerController extends Controller
     public function profile()
     {
         $customer = Auth('web')->user();
-        return view('profile.welcome',[
+        return view('shop.profile.welcome',[
             'customer' => $customer
         ]);
     }
     public function account()
     {
         $customer = Auth('web')->user();
-        return view('profile.account',[
+        return view('shop.profile.account',[
             'customer' => $customer
         ]);
     }
@@ -27,7 +28,7 @@ class CustomerController extends Controller
     public function orders()
     {
         $customer = Auth('web')->user();
-        return view('profile.orders.index',[
+        return view('shop.profile.orders.index',[
             'customer' => $customer
         ]);
 

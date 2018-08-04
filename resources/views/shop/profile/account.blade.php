@@ -1,4 +1,4 @@
-@extends('profile.layout')
+@extends('shop.profile.layout')
 @section('main')
 <form class="form-row p-tb-20" method="POST" action="{{ route('changeDataCustomer') }}">
 @csrf

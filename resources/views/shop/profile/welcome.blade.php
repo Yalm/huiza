@@ -1,4 +1,4 @@
-@extends('profile.layout')
+@extends('shop.profile.layout')
 @section('main')
 <section class="p-tb-20">
     <h1>Hola {{ "$customer->name (¿no eres $customer->name?" }} 

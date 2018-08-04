@@ -1,4 +1,4 @@
-@extends('profile.layout')
+@extends('shop.profile.layout')
 @section('main')
 <div class="form-row p-tb-10">
     @if($orders->isEmpty())
