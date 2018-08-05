@@ -51,7 +51,7 @@ Route::get('/customer/verify/{token}', 'Auth\RegisterController@verifyCustomer')
 Route::get('/resend','Auth\ResendEmailController@resend');
 Route::post('/resend','Auth\ResendEmailController@resendEmail')->name('resend');
 
-Route::get('/home', 'Ecommerce\HomeController@index')->name('home');
+//Route::get('/home', 'Ecommerce\HomeController@index')->name('home');
 
 
 Route::prefix('admin')->group(function () 
@@ -70,6 +70,7 @@ Route::prefix('admin')->group(function ()
     Route::group(['middleware' => 'auth:user'], function ()
     {
         Route::resource('/product','Dashboard\ProductController');
+        Route::resource('/category','Dashboard\CategoryController');
         Route::get('/profile','Dashboard\UserController@profile');
     });
 });

@@ -39,19 +39,13 @@
                      			@foreach ($products as $product)
 									<tr>
 										<td>{{ $product->name }}</td>
-										<td>{{ $product->price }}</td>
-										<td><img src="{{ asset($product->image) }}" alt="" width="50"></td>
+										<td>{{ "S/.$product->price" }}</td>
+										<td><img src="{{ asset($product->image) }}" width="50"></td>
 										<td>{{ $product->stock }}</td>
 										<td>{{ $product->category->name }}</td>
 										<td class="form-inline">
-										<a href="{{ url("admin/product/$product->id/edit") }}" class="btn btn-primary"><i class="fa fa-refresh" aria-hidden="true"></i></a>
-										<form action="{{url('admin/product/'.$product->id)}}" method="post" role="form">
-											{{ csrf_field() }}
-											<input name="_method" type="hidden" value="DELETE">
-											<button class="btn btn-primary" type="submit">
-											    <i class="fa fa-trash-o" aria-hidden="true"></i>
-											</button>
-										</form>
+										    <a href="{{ url("admin/product/$product->id/edit") }}" class="btn btn-primary"><i class="fa fa-refresh" aria-hidden="true"></i></a>
+                                            <a href="javascript:void(0)" id="deleteProduct" data-url="{{url("admin/product/$product->id")}}" class="btn btn-primary"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
 										</td>
 									</tr>
                             	@endforeach
@@ -65,10 +59,45 @@
     <!-- End PAge Content -->
 </div>
 <!-- End Container fluid  -->
- 
+<form method="post" role="form" id="deleteProductForm">
+    @csrf
+    <input name="_method" type="hidden" value="DELETE">
+</form>
+
 @endsection
 @section('mijsfile')
 	<script src="{{ asset('js/lib/datatables/datatables.min.js') }}"></script>
 	<script src="{{ asset('js/lib/datatables/datatables-init.js') }}"></script>
+    <script>
+    $(document).ready(function(){
+        $('#deleteProduct').click(function(event) 
+        {
+            var urlSend = $(this).data('url');
+            swal({
+                title: "¿Estás seguro de eliminar?",
+                text: "No podrás recuperar este producto jamas !!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#BED001",
+                confirmButtonText: "Sí, eliminarlo !!",
+                cancelButtonText: "No, cancelalo !!",
+                closeOnConfirm: false,
+                closeOnCancel: false
+                },
+                function(isConfirm)
+                {
+                    if (isConfirm) 
+                    {
+                        $('#deleteProductForm').attr('action', urlSend);
+                        $('#deleteProductForm').trigger('submit');
+                    }
+                    else 
+                    {
+                        swal("Cancelado !!", "Oye, tu producto esta seguro !!", "error");
+                    }
+                });
+        });
+    });
+    </script>
 @endsection
 

@@ -17,7 +17,7 @@ body.stop-scrolling {
   z-index: 10000; }
 
 .sweet-alert {
-  background-color: white;
+  background-color: #242424;
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   width: 478px;
   padding: 17px;
@@ -39,7 +39,7 @@ body.stop-scrolling {
       left: 15px;
       right: 15px; } }
   .sweet-alert h2 {
-    color: #575757;
+    color: #DFDFDF;
     font-size: 30px;
     text-align: center;
     font-weight: 600;
@@ -296,7 +296,7 @@ body.stop-scrolling {
         position: absolute;
         width: 60px;
         height: 120px;
-        background: white;
+        background: #242424;
         -webkit-transform: rotate(45deg);
         transform: rotate(45deg); }
       .sweet-alert .sa-icon.sa-success::before {
@@ -332,7 +332,7 @@ body.stop-scrolling {
       .sweet-alert .sa-icon.sa-success .sa-fix {
         width: 5px;
         height: 90px;
-        background-color: white;
+        background-color: #242424;
         position: absolute;
         left: 28px;
         top: 8px;

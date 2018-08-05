@@ -19,6 +19,8 @@
     <!-- Notifications-->
     <link href="{{ asset('vendor/messenger/messenger.css') }}" rel="stylesheet">
     <link href="{{ asset('vendor/messenger/messenger-theme-flat.css') }}" rel="stylesheet">
+     <link href="{{ asset('css/lib/sweetalert/sweetalert.css') }}" rel="stylesheet">
+
     @yield('mycssfile')
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:** -->
@@ -139,6 +141,9 @@
     <!-- Notifications-->
     <script src="{{ asset('vendor/messenger/messenger.min.js') }}"></script>
     <script src="{{ asset('vendor/messenger/messenger-theme-flat.js') }}"></script>
+
+    <script src="{{ asset('js/lib/sweetalert/sweetalert.min.js') }}"></script>
+    
     <!--Custom JavaScript -->
     <script src="{{ asset('js/custom.min.js') }}"></script>
 
