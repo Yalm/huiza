@@ -70,5 +70,6 @@ Route::prefix('admin')->group(function ()
     Route::group(['middleware' => 'auth:user'], function ()
     {
         Route::resource('/product','Dashboard\ProductController');
+        Route::get('/profile','Dashboard\UserController@profile');
     });
 });
