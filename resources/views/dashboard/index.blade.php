@@ -38,7 +38,7 @@
                         <span><i class="fa fa-shopping-cart f-s-40 color-success"></i></span>
                     </div>
                     <div class="media-body media-text-right">
-                        <h2>1178</h2>
+                        <h2>{{ $order_count }}</h2>
                         <p class="m-b-0 text-white">Pedidos</p>
                     </div>
                 </div>
@@ -51,7 +51,7 @@
                         <span><i class="fa fa-archive f-s-40 color-warning"></i></span>
                     </div>
                     <div class="media-body media-text-right">
-                        <h2>25</h2>
+                        <h2>{{ $product_count }}</h2>
                         <p class="m-b-0 text-white">Productos</p>
                     </div>
                 </div>
@@ -64,7 +64,7 @@
                         <span><i class="fa fa-user f-s-40 color-danger"></i></span>
                     </div>
                     <div class="media-body media-text-right">
-                        <h2 >847</h2>
+                        <h2 >{{ $customer_count }}</h2>
                         <p class="m-b-0 text-white">Clientes</p>
                     </div>
                 </div>

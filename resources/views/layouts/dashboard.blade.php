@@ -16,6 +16,10 @@
     <!-- Custom CSS -->
     <link href="{{ asset('css/helper.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <!-- Notifications-->
+    <link href="{{ asset('vendor/messenger/messenger.css') }}" rel="stylesheet">
+    <link href="{{ asset('vendor/messenger/messenger-theme-flat.css') }}" rel="stylesheet">
+    @yield('mycssfile')
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:** -->
     <!--[if lt IE 9]>
@@ -37,7 +41,7 @@
             <nav class="navbar top-navbar navbar-expand-md navbar-light">
                 <!-- Logo -->
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="index-2.html">
+                    <a class="navbar-brand" href="{{ url('admin') }}">
                         <!-- Logo icon -->
                         <b class="text-white f-s-30"><i class="fa fa-bicycle" aria-hidden="true"></i></b>
                         <!--End Logo icon -->
@@ -60,8 +64,15 @@
                             <a class="nav-link dropdown-toggle text-muted  " href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{ asset('images/avatar.png') }}" alt="user" class="profile-pic" /></a>
                             <div class="dropdown-menu dropdown-menu-right animated zoomIn dropdown_ch">
                                 <ul class="dropdown-user">
-                                    <li><a href="#"><i class="ti-user"></i> Profile</a></li>
-                                    <li><a href="#"><i class="fa fa-power-off"></i> Logout</a></li>
+                                    <li><a href="{{ url('admin/profile') }}"><i class="ti-user"></i> Perfil</a></li>
+                                    <li><a href="{{ route('logout') }}"
+								                    onclick="event.preventDefault();
+													document.getElementById('logout-form').submit();"><i class="fa fa-power-off"></i> Salir</a>
+                                        <form id="logout-form" action="{{ route('user.logout') }}" method="POST" style="display: none;">
+                                                {{ csrf_field() }}
+                                        </form>
+                                    </li>
+                                    
                                 </ul>
                             </div>
                         </li>
@@ -78,13 +89,14 @@
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
                     <li class="nav-devider"></li>
-                    <li class="nav-label">Home</li>
+                    <li class="nav-label"></li>
                     <li><a href="{{ url('admin/login') }}" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">Inicio</span></a>
                     </li>
                     <li> <a class="has-arrow" href="#" aria-expanded="false"><i class="fa fa-archive"></i><span class="hide-menu">Productos</span></a>
                         <ul aria-expanded="false" class="collapse">
-                            <li><a href="index-2.html">Nuevo Producto </a></li>
-                            <li><a href="index1.html">Categoría </a></li>
+                            <li><a href="{{ url('admin/product') }}">Todos los productos </a></li>
+                            <li><a href="{{ url('admin/product/create') }}">Nuevo Producto </a></li>
+                            <li><a href="{{ url('admin/category') }}">Categoría </a></li>
                         </ul>
                     </li>
                     <li><a href="{{ url('admin/order') }}" aria-expanded="false"><i class="fa fa-truck"></i><span class="hide-menu">Pedidos</span></a>
@@ -124,8 +136,14 @@
     <script src="{{ asset('js/sidebarmenu.js') }}"></script>
     <!--stickey kit -->
     <script src="{{ asset('js/lib/sticky-kit-master/dist/sticky-kit.min.js') }}"></script>
+    <!-- Notifications-->
+    <script src="{{ asset('vendor/messenger/messenger.min.js') }}"></script>
+    <script src="{{ asset('vendor/messenger/messenger-theme-flat.js') }}"></script>
     <!--Custom JavaScript -->
     <script src="{{ asset('js/custom.min.js') }}"></script>
+
+
+    @yield('mijsfile')
 
 </body>
 

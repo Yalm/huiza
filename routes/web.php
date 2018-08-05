@@ -66,4 +66,9 @@ Route::prefix('admin')->group(function ()
     Route::get('/password/reset','Auth\UserForgotPasswordController@showLinkRequestForm')->name('user.password.request');
     Route::post('/password/reset','Auth\UserResetPasswordController@reset');
     Route::get('/password/reset/{token}','Auth\UserResetPasswordController@showResetForm')->name('user.password.reset');
+
+    Route::group(['middleware' => 'auth:user'], function ()
+    {
+        Route::resource('/product','Dashboard\ProductController');
+    });
 });

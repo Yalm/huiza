@@ -197,7 +197,7 @@
 					</li>
 					<li class="p-b-13">
 						<a href="{{ url('profile/account') }}" class="stext-102 cl5 hov-cl1 trans-04">Detalles de mi cuenta</a>
-					</li
+					</li>
 					<li class="p-b-13">
 						<a href="{{ route('logout') }}"
 								onclick="event.preventDefault();

@@ -2476,7 +2476,7 @@ textarea {
   padding-top: 5px;
 }
 .dt-buttons .dt-button {
-  background: #1976d2 none repeat scroll 0 0;
+  background: #BED001 none repeat scroll 0 0;
   border-radius: 4px;
   color: #ffffff;
   margin-right: 3px;
@@ -2494,16 +2494,17 @@ textarea {
 }
 .dataTables_length select {
   background-color: transparent;
-  background-image: linear-gradient(#1976d2, #1976d2), linear-gradient(#b1b8bb, #b1b8bb);
+  background-image: linear-gradient(#BED001, #BED001), linear-gradient(#b1b8bb, #b1b8bb);
   background-position: center bottom, center calc(99%);
   background-repeat: no-repeat;
   background-size: 0 2px, 100% 1px;
   border: 0 none;
   padding-bottom: 5px;
   transition: background 0s ease-out 0s;
+  color: rgb(185, 181, 181);
 }
 .dataTables_length select:focus {
-  background-image: linear-gradient(#1976d2, #1976d2), linear-gradient(#b1b8bb, #b1b8bb);
+  background-image: linear-gradient(#BED001, #BED001), linear-gradient(#b1b8bb, #b1b8bb);
   background-size: 100% 2px, 100% 1px;
   box-shadow: none;
   outline: medium none;
@@ -2515,7 +2516,7 @@ textarea {
 }
 .dataTables_filter input {
   background-color: transparent;
-  background-image: linear-gradient(#1976d2, #1976d2), linear-gradient(#b1b8bb, #b1b8bb);
+  background-image: linear-gradient(#BED001, #BED001), linear-gradient(#b1b8bb, #b1b8bb);
   background-position: center bottom, center calc(99%);
   background-repeat: no-repeat;
   background-size: 0 2px, 100% 1px;
@@ -2525,9 +2526,10 @@ textarea {
   float: none;
   margin-left: 10px;
   transition: background 0s ease-out 0s;
+  color: rgb(185, 181, 181);
 }
 .dataTables_filter input:focus {
-  background-image: linear-gradient(#1976d2, #1976d2), linear-gradient(#b1b8bb, #b1b8bb);
+  background-image: linear-gradient(#BED001, #BED001), linear-gradient(#b1b8bb, #b1b8bb);
   background-size: 100% 2px, 100% 1px;
   box-shadow: none;
   outline: medium none;
@@ -2553,7 +2555,7 @@ table.dataTable thead .sorting_desc::after {
   margin-left: 10px;
 }
 table.dataTable thead .sorting::after {
-  color: rgba(50, 50, 50, 0.5);
+  color: rgba(153, 152, 152, 0.5);
   content: "";
   cursor: pointer;
   font-family: fontawesome !important;
@@ -2577,8 +2579,8 @@ table.dataTable thead .sorting::after {
 }
 .dataTables_wrapper .dataTables_paginate .paginate_button.current,
 .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
-  background-color: #1976d2;
-  border: 1px solid #1976d2;
+  background-color: #BED001;
+  border: 1px solid #BED001;
   color: #ffffff !important;
 }
 .dataTables_wrapper .dataTables_paginate .paginate_button.disabled,
@@ -2587,12 +2589,12 @@ table.dataTable thead .sorting::after {
   background: transparent none repeat scroll 0 0;
   border: 1px solid #ddd;
   box-shadow: none;
-  color: #67757c;
+  color: #ffffff;
   cursor: default;
 }
 .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
-  background-color: #1976d2;
-  border: 1px solid #1976d2;
+  background-color: #BED001;
+  border: 1px solid #BED001;
   color: white;
 }
 .dataTables_wrapper .dataTables_paginate .paginate_button:active {
@@ -4864,7 +4866,6 @@ footer p {
   margin-bottom: 20px;
 }
 .form-control {
-  height: 42px;
   border-radius: 0;
   box-shadow: none;
   border-color: #e7e7e7;
@@ -6939,29 +6940,52 @@ tbody tr td:last-child {
   background-color: #555555 !important;
 }
 
-.dropdown_ch a
-{
-  color: #E6E6E6 !important;
-}
-.dropdown_ch li
+.dropdown_ch a 
 {
   color: #E6E6E6 !important;
 }
 
-.dropdown_ch a:hover
+.dropdown_ch a:hover 
 {
   color: #BED001 !important;
 }
+
+
+/*   card_ch */
 .card_ch
 {
   background: #2F2F32 !important;
   color: #E6E6E6 !important;
 }
+.card_ch .form-control 
+{
+  background: #2F2F32;
+  color: #E6E6E6 ;
+}
+.form-control:focus {   
+  border-color: rgba(190, 208, 1, 0.8);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(190, 208, 1, 0.6);
+  outline: 0 none;
+}
 
-.card_ch a:hover
+ .hov_a_ch:hover
 {
   color: #BED001 !important;
 }
+.card_ch .table
+{
+  margin-top: 5px;
+  margin-bottom: 20px;
+}
+.card_ch .table  [type=search]
+{
+  color: #E6E6E6 !important;
+} 
+.card_ch th,td
+{
+  color: #E6E6E6 !important;
+}
+
 
 
 
