@@ -65,7 +65,7 @@
 </form>
 
 @endsection
-@section('mijsfile')
+@section('myjsfile')
 	<script src="{{ asset('js/lib/datatables/datatables.min.js') }}"></script>
 	<script src="{{ asset('js/lib/datatables/datatables-init.js') }}"></script>
     <script>

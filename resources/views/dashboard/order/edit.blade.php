@@ -99,6 +99,11 @@
             <div class="card card_ch">
                 <div class="card-body">
                     <h4 class="card-title">Productos</h4>
+                        @if (session('error'))
+                            <div class="alert alert-danger col-md-12">
+                                {{ session('error') }}
+                            </div>
+                         @endif
                     <div class="table-responsive">
                         <table class="table table-striped my-3">
                             <thead>
@@ -155,7 +160,30 @@
 	<script>
         $(document).on('click','#deleteProductoOrder',function()
         {
-            $(this).parent().remove();
+            var trDelete = $(this).parent();
+            swal({
+            title: "¿Estás seguro de eliminar?",
+            text: "No podrás recuperar este producto jamas !!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#BED001",
+            confirmButtonText: "Sí, eliminarlo !!",
+            cancelButtonText: "No, cancelalo !!",
+            closeOnConfirm: false,
+            closeOnCancel: false
+            },
+            function(isConfirm) 
+            {
+                if (isConfirm) 
+                {
+                    swal("¡Eliminado!", "¡Oye, tu producto  ha sido eliminado!", "success");
+                    trDelete.remove();
+                }
+                else 
+                {
+                    swal("Cancelado !!", "Oye, tu producto esta seguro !!", "error");
+                }
+            });
         });
     </script>
 @endsection

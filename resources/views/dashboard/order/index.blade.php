@@ -26,6 +26,7 @@
                         <table id="myTable" class="table table-striped ">
                             <thead>
                                 <tr>
+                                    <th class="hidden">Fecha</th>
                                     <th>Cliente</th>
                                     <th>Codigo Orden</th>
                                     <th>Monto</th>
@@ -36,6 +37,7 @@
                             <tbody>         
                      			@foreach ($orders as $order)
 									<tr>
+                                        <td class="hidden">{{ $order->created_at }}</td>
                                         <td>{{ $order->customer->name }}</td>
 										<td>{{ $order->getIdFormat() }}</td>
 										<td>S/.{{ $order->getTotalPrice() }}</td>

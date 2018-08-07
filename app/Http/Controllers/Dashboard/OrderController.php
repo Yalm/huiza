@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Order;
 use App\State;
+use App\Product;
 
 class OrderController extends Controller
 {
@@ -46,26 +47,26 @@ class OrderController extends Controller
         $order->email = $request->email;
         $order->address = $request->address;
 
-        if($request->state == 2)
+        if($request->states == 2)
         {
             foreach($order->products as $product)
             {
                 if($product->pivot->quantity > $product->stock)
                 {
-                    return redirect()->back()->with('error',"Producto $product->name sobrepaso el stock");
+                    return redirect()->back()->with('error',"Producto: $product->name (stock:$product->stock) sobrepaso su stock");
                 }
             }
             foreach($order->products as $product)
             {
-                $productUpdate = Product::find($product->id);
-                $productUpdate->stock -= $product->pivot->quantity;
-                $product->save();
+                $productUpdate = Product::findOrFail($product->id);
+                $productUpdate->stock = $productUpdate->stock - $product->pivot->quantity;
+                $productUpdate->save();
             }
         }
 
         $order->state_id = $request->states;
         $order->save();
 
-        return redirect('admin/order');
+        return redirect('admin/order')->with('success','Su pedido ha sido actualizado con éxito.');
     }
 }

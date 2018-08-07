@@ -17,11 +17,11 @@ class DatabaseSeeder extends Seeder
 
         $products = factory(App\Product::class,300)->create();
 
-        $customers = factory(App\Customer::class,100)->create();
+        $customers = factory(App\Customer::class,10)->create();
 
         $customers->each(function(App\Customer $customer)
         {
-            factory(App\Order::class,30)->create(['customer_id'=> $customer->id])
+            factory(App\Order::class,3)->create(['customer_id'=> $customer->id])
                                         ->each(function(App\Order $order)
             {
                 

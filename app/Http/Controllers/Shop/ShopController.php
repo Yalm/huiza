@@ -13,7 +13,7 @@ class ShopController extends Controller
 {
     public function index() 
     {
-        $products = Product::latest()->take(8)->get();
+        $products = Product::where('stock', '>', 0)->latest()->take(8)->get();
         $categories = Category::latest()->take(6)->get();
         return view('shop.welcome',[
             'products' => $products,
@@ -32,7 +32,7 @@ class ShopController extends Controller
 
     public function shop() 
     {
-        $products = Product::latest()->paginate(12);
+        $products = Product::where('stock', '>', 0)->latest()->paginate(12);
         $categories = Category::all();
         return view('shop.shop',[
             'products' => $products,
