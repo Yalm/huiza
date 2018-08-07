@@ -101,17 +101,22 @@
                             <li><a href="{{ url('admin/category') }}">Categoría </a></li>
                         </ul>
                     </li>
-                    <li><a href="{{ url('admin/order') }}" aria-expanded="false"><i class="fa fa-truck"></i><span class="hide-menu">Pedidos</span></a>
+                    <li> <a class="has-arrow" href="#" aria-expanded="false"><i class="fa fa-truck"></i><span class="hide-menu">Pedidos</span></a>
+                        <ul aria-expanded="false" class="collapse">
+                            <li><a href="{{ url('admin/order') }}">Todos los pedidos </a></li>
+                            <li><a href="{{ url('admin/state') }}">Estados </a></li>
+                        </ul>
                     </li>
+
                     <li> <a class="has-arrow" href="#" aria-expanded="false"><i class="fa fa-user"></i><span class="hide-menu">Usuarios</span></a>
                         <ul aria-expanded="false" class="collapse">
                             <li><a href="index-2.html">Todos los usuario </a></li>
                             <li><a href="index1.html">Añadir nuevo </a></li>
                         </ul>
                     </li>
-                    <li><a href="{{ url('admin/order') }}" aria-expanded="false"><i class="fa fa-users"></i><span class="hide-menu">Clientes</span></a>
+                    <li><a href="{{ url('admin/customer') }}" aria-expanded="false"><i class="fa fa-users"></i><span class="hide-menu">Clientes</span></a>
                     </li>
-                    <li><a href="{{ url('admin/order') }}" aria-expanded="false"><i class="fa fa-file"></i><span class="hide-menu">Reportes</span></a>
+                    <li><a href="{{ url('admin/report') }}" aria-expanded="false"><i class="fa fa-file"></i><span class="hide-menu">Reportes</span></a>
                     </li>
                     </ul>
                 </nav>
@@ -148,7 +153,7 @@
     <script src="{{ asset('js/custom.min.js') }}"></script>
 
 
-    @yield('mijsfile')
+    @yield('myjsfile')
 
 </body>
 

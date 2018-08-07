@@ -4359,7 +4359,7 @@ footer p {
   float: left;
   height: 60px;
   width: 60px;
-  background: url(../../../../michaeltruong.ca/images/logo1.png) no-repeat;
+  background: url(../images/avatar.png) no-repeat;
   background-size: 60px 60px;
 }
 .clientlogo {
@@ -7098,4 +7098,8 @@ body .login_fields__submit input:hover {
   transition-duration: .2s;
 }
 
+.hidden
+{
+    display: none;
+}
 

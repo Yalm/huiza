@@ -21,6 +21,7 @@ class CreateCustomersTable extends Migration
             $table->string('address')->nullable();
             $table->string('email')->unique();
             $table->string('password');
+            $table->boolean('actived')->default(true);  
             $table->boolean('verified')->default(false);             
             $table->rememberToken();
             $table->timestamps();

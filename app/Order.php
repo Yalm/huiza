@@ -25,4 +25,18 @@ class Order extends Model
       return $id;
     }
     
+    public function getTotalPrice() 
+    {
+      return $this->products->sum(function($product) 
+      {
+        return $product->pivot->quantity * $product->price;
+      });
+    }
+
+    public function state()
+    {
+      return $this->belongsTo(State::class);
+  
+    }
+    
 }
