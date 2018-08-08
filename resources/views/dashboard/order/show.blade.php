@@ -27,8 +27,8 @@
                     </div>
                     <!--End Info-->
                     <div class="title">
-                        <h4 class="text-white text-uppercase">Pedido #{{ $order->getIdFormat() }}</h4>
-                        <p>Emitido: {{ $order->created_at->format('F d \,\ Y ')  }}<br> Estado de pago: {{ $order->state->name }}
+                        <h4 class="text-white text-uppercase">Pedido {{ $order->getIdFormat() }}</h4>
+                        <p>Emitido: {{ $order->created_at->format('F d \,\ Y ')  }}<br> Estado de pago: <b class="text-uppercase">{{ $order->state->name }}</b>
                         </p>
                     </div>
                     <!--End Title-->

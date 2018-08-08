@@ -12,7 +12,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call(StateSeeder::class);
-        
+        /*
         $categories=factory(App\Category::class, 6)->create();
 
         $products = factory(App\Product::class,300)->create();
@@ -32,6 +32,7 @@ class DatabaseSeeder extends Seeder
 
             });
         });
+        */
         
         $this->call(UserSeeder::class);
     }

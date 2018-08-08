@@ -24,7 +24,7 @@ class CreateOrdersTable extends Migration
             $table->string('email');
             $table->string('phone');                                    
             $table->string('address');
-            $table->string('boucher')->nullable();
+            $table->string('voucher')->nullable();
 
             $table->integer('state_id')->unsigned();
             $table->foreign('state_id')->references('id')->on('states');

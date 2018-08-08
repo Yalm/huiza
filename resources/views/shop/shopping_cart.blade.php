@@ -30,7 +30,7 @@
                   <tr class="table_row" id="trProductCart{{ $product->rowId }}">
                     <td class="column-1">
                       <div class="how-itemcart1" data-id="{{$product->rowId}}" id="DeleteProductCart" >
-                        <img src="{{ asset('/admin/'.$product->options->img)  }}" alt="IMG">
+                        <img src="{{ asset($product->options->img)  }}" alt="IMG">
                       </div>
                     </td>
                     <input type="hidden" name="rowId[]" value="{{$product->rowId}}">

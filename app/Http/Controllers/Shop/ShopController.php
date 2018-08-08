@@ -15,6 +15,12 @@ class ShopController extends Controller
     {
         $products = Product::where('stock', '>', 0)->latest()->take(8)->get();
         $categories = Category::latest()->take(6)->get();
+
+        $products->each(function($products)
+        {
+            $products->image = url($products->image);
+        });
+
         return view('shop.welcome',[
             'products' => $products,
             'categories' => $categories,
@@ -24,6 +30,8 @@ class ShopController extends Controller
     public function show($id)  
     {
         $product = Product::findOrFail($id);
+        $product->image = url($product->image);
+
         return view('shop.show_product',
         [
             'product' => $product,
@@ -34,6 +42,12 @@ class ShopController extends Controller
     {
         $products = Product::where('stock', '>', 0)->latest()->paginate(12);
         $categories = Category::all();
+
+        $products->each(function($products)
+        {
+            $products->image = url($products->image);
+        });
+
         return view('shop.shop',[
             'products' => $products,
             'categories' => $categories,
@@ -44,30 +58,38 @@ class ShopController extends Controller
     {   
         return view('shop.about');
     }
+    
     public function contact() 
     {   
         return view('shop.contact');
     }
+
     public function sendContact(Request $request)
     {
-      Mail::send('emails.contact-us',
-      array(
-          'email' => $request->email,
-          'user_message' => $request->message,
-      ), function($message) use($request)
-      {
-          $message->from($request->email);
-          $message->to('prueba@comercialhuizaperu.com', 'Admin')->subject('Mensaje de Contáctanos');
-      });
-      return back()->with('success', '¡Gracias por contactarnos!');
-  
+        Mail::send('emails.contact-us',
+        [
+            'email' => $request->email,
+            'user_message' => $request->message,
+        ], function($message) use($request)
+        {
+            $message->from($request->email);
+            $message->to('prueba@comercialhuizaperu.com', 'Admin')->subject('Mensaje de Contáctanos');
+        });
+        return back()->with('success', '¡Gracias por contactarnos!');
+    
     }
     
     public function search(Request $request) 
     {   
         $query = $request->input('query');
         $products = Product::with('category')->where('name' ,'LIKE', "%$query%")->paginate(10);
-        return view('shop.searchs.product-name',[
+
+        $products->each(function($products)
+        {
+            $products->image = url($products->image);
+        });
+
+        return view('shop.shop',[
             'products' => $products,
         ]);
     }
@@ -77,7 +99,12 @@ class ShopController extends Controller
         $category = Category::SearchCategory($name)->first();
         $products = $category->products()->paginate(12);
 
-        return view('shop.searchs.category-name',[
+        $products->each(function($products)
+        {
+            $products->image = url($products->image);
+        });
+
+        return view('shop.shop',[
             'products' => $products,
         ]);
     }

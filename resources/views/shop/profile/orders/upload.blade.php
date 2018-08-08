@@ -15,10 +15,10 @@
         </div>
     @endif
     <div class="col-md-12 p-b-20"> 
-        @if($order->boucher)
-            <input type="file" name="boucher" class="dropify" data-default-file="{{ url($order->boucher) }}" />    
+        @if($order->voucher)
+            <input type="file" name="voucher" class="dropify" data-default-file="{{ url($order->voucher) }}" />    
         @else
-            <input type="file" name="boucher" class="dropify"/>            
+            <input type="file" name="voucher" class="dropify"/>            
         @endif
     </div>
     <a  href="{{ url('profile/orders') }}" class=" p-t-10 p-r-10 fs-18  hov-cl1 cl5 p-b-30">

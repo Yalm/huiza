@@ -30,7 +30,7 @@ class OrderController extends Controller
     public function canceled($id)
     {
         $order = Order::findOrfail($id);
-        $order->state = 'cancelado';
+        $order->state_id = '1';
         $order->save();
 
         return back()->with('success','Pedido Cancelado');
@@ -38,22 +38,23 @@ class OrderController extends Controller
 
     public function upload(Request $request,$id)
     {
-        if($request->hasFile('boucher')) 
+        if($request->hasFile('voucher')) 
         {
             $order = Order::find($id);
 
-            $boucher =$request->file('boucher');
-            $boucherHash = $boucher->hashName();
-            Image::make($boucher)->save("images/bouchers/$boucherHash");
+            $voucher =$request->file('voucher');
+            $voucherHash = $voucher->hashName();
+            Image::make($voucher)->save("images/bouchers/$voucherHash");
 
-            $order->boucher = "images/bouchers/$boucherHash";
-            $order->state = 'pendiente de revisión';
+            $order->voucher = "images/bouchers/$voucherHash";
+            $order->state_id = '4';
             $order->save();
 
             return back()->with('success', 'Comprobante de pago subido con extio!');
         }
         return back();
     }
+    
     public function show($id)
     {
         $order = Order::find($id);

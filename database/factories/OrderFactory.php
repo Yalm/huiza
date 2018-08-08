@@ -10,7 +10,7 @@ $factory->define(App\Order::class, function (Faker $faker) {
         'phone' => $faker->phoneNumber,
         'address' => $faker->address,
         'state_id' => rand(1,6),
-        'boucher' => $faker->imageUrl,
+        'voucher' => $faker->imageUrl,
         'created_at' =>$faker->dateTimeThisDecade,
         'updated_at' =>$faker->dateTimeThisDecade,
     ];

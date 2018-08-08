@@ -20,6 +20,8 @@ class OrderController extends Controller
     public function edit($id)
     {
         $order = Order::findOrFail($id);
+        $order->voucher = url($order->voucher);   
+
         $states = State::all();
         
         return view('dashboard.order.edit',[
@@ -31,7 +33,6 @@ class OrderController extends Controller
     public function show($id)
     {
         $order = Order::findOrFail($id);
-
         return view('dashboard.order.show',[
             'order' => $order
         ]);
@@ -47,22 +48,27 @@ class OrderController extends Controller
         $order->email = $request->email;
         $order->address = $request->address;
 
-        if($request->states == 2)
+        if($order->state_id != 2)
         {
-            foreach($order->products as $product)
+            if($request->states == 2)
             {
-                if($product->pivot->quantity > $product->stock)
+                foreach($order->products as $product)
                 {
-                    return redirect()->back()->with('error',"Producto: $product->name (stock:$product->stock) sobrepaso su stock");
+                    if($product->pivot->quantity > $product->stock)
+                    {
+                        return redirect()->back()
+                                        ->with('error',"Producto: $product->name (stock:$product->stock) sobrepaso su stock");
+                    }
+                }
+                foreach($order->products as $product)
+                {
+                    $productUpdate = Product::findOrFail($product->id);
+                    $productUpdate->stock = $productUpdate->stock - $product->pivot->quantity;
+                    $productUpdate->save();
                 }
             }
-            foreach($order->products as $product)
-            {
-                $productUpdate = Product::findOrFail($product->id);
-                $productUpdate->stock = $productUpdate->stock - $product->pivot->quantity;
-                $productUpdate->save();
-            }
         }
+        
 
         $order->state_id = $request->states;
         $order->save();

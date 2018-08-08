@@ -30,14 +30,14 @@
                 <tr>
                     <th scope="row" class="text-uppercase text-truncate" style="max-width: 280px;">{{ $order->getIdFormat() }}</th>
                     <td>{{ $order->created_at->format('F d \,\ Y ')  }}</td>
-                    <td class="text-capitalize">{{ $order->state }}</td>
-                    <td>{{ "S/. $order->total" }}</td>
+                    <td class="text-capitalize">{{ $order->state->name }}</td>
+                    <td>S/.{{ $order->getTotalPrice() }}</td>
                     <td>
-                    @if($order->state == 'cancelado' || $order->state == 'cerrado' || $order->state == 'aprobado' || $order->state == 'denegado')
+                    @if($order->state->name == 'cancelado' || $order->state->name == 'cerrado' || $order->state->name == 'aprobado' || $order->state->name == 'denegado')
                         <a href="{{ url("profile/order/$order->id") }}" class="fs-20 hov-cl1 cl5 p-r-5"> 
                             <i class="zmdi zmdi-eye"></i>
                         </a>
-                    @elseif($order->state == 'falta de pago' || $order->state == 'pendiente de revisión')
+                    @elseif($order->state->name == 'falta de pago' || $order->state->name == 'pendiente de revisión')
                         <a href="{{ url("profile/order/$order->id/canceled") }}" class="fs-20 hov-cl1 cl5 p-r-5"> 
                             <i class="zmdi zmdi-close"></i>
                         </a>

@@ -47,8 +47,7 @@ class PaymentController extends Controller
             'email' =>$request->email,
             'phone' => $request->phone,
             'address' => $request->address,
-            'state' => 'falta de pago',
-            'total' => Cart::subtotal(2,'.','')
+            'state_id' => '4',
         ]);
         
         $meOrder = Order::find($order->id);

@@ -135,11 +135,15 @@
                     <div class="row">
                         <h5 class="my-3 col-md-7">Comprobante de pago</h5>
                         <div class="col-md-6">
-                            <img class="img-responsive" src="{{ $order->boucher }}">
+                            @if($order->voucher)
+                                <img class="img-responsive" src="{{ $order->voucher }}">
+                            @else
+                                <img class="img-responsive" src="{{ asset('images/default.jpg') }}">
+                            @endif
                         </div>
                         <div class="form-group col-md-6 my-3">
                             <label class="mr-sm-2" for="inlineFormCustomSelect">Estado de pedido</label>
-                            <select class="form-control" name="states">
+                            <select class="form-control text-uppercase" name="states">
                                 @foreach ($states as $state)
                                     @if ($order->state->id == $state->id)
                                         <option selected="true" value="{{ $state->id }}">{{ $state->name}}</option>
