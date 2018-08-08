@@ -20,7 +20,11 @@ class OrderController extends Controller
     public function edit($id)
     {
         $order = Order::findOrFail($id);
-        $order->voucher = url($order->voucher);   
+        
+        if($order->voucher)
+        {
+            $order->voucher = url($order->voucher);        
+        }
 
         $states = State::all();
         

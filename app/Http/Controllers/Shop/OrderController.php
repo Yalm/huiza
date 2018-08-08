@@ -44,9 +44,9 @@ class OrderController extends Controller
 
             $voucher =$request->file('voucher');
             $voucherHash = $voucher->hashName();
-            Image::make($voucher)->save("images/bouchers/$voucherHash");
+            Image::make($voucher)->save("images/vouchers/$voucherHash");
 
-            $order->voucher = "images/bouchers/$voucherHash";
+            $order->voucher = "images/vouchers/$voucherHash";
             $order->state_id = '4';
             $order->save();
 
