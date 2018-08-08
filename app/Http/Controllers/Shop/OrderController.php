@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Order;
 use Image;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use App\Http\Requests\OrderRequest;
 
 class OrderController extends Controller
 {
@@ -38,16 +39,20 @@ class OrderController extends Controller
 
     public function upload(Request $request,$id)
     {
+        $this->validate($request,[
+			'voucher' => 'image',
+        ]);
+        
         if($request->hasFile('voucher')) 
         {
-            $order = Order::find($id);
+            $order = Order::findOrFail($id);
 
             $voucher =$request->file('voucher');
             $voucherHash = $voucher->hashName();
             Image::make($voucher)->save("images/vouchers/$voucherHash");
 
             $order->voucher = "images/vouchers/$voucherHash";
-            $order->state_id = '4';
+            $order->state_id = '3';
             $order->save();
 
             return back()->with('success', 'Comprobante de pago subido con extio!');

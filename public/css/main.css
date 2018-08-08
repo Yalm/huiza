@@ -3694,3 +3694,26 @@ tfoot .order-total .amount {
   font-size: 1.875rem;
   font-weight: 700;
 }
+
+/* STATUS COLOR ORDER */
+
+.state_red
+{
+  color: red;
+}
+
+.state_yellow
+{
+  color: yellow;
+}
+
+.state_green
+{
+  color: green;
+}
+
+.state_blue
+{
+  color: blue;
+}
+

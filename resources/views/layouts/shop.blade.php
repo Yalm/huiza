@@ -369,12 +369,25 @@
 			{
 				if(!data.message)
 				{
-					swal(data.product.name, "Se agrego al carrito !", "success");
+					swal({
+						type: 'success',
+						title: data.product.name,
+						text: 'Se agrego al carrito !',
+						confirmButtonClass: 'flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer',
+        				buttonsStyling: false,
+					});
+
 					$('.count_cart_a').attr('data-notify',data.count_cart);
 				}
 				else
 				{
-					swal('Error', data.message, "error");
+					swal({
+						type: 'error',
+						title: 'Error',
+						text: data.message,
+						confirmButtonClass: 'flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer',
+        				buttonsStyling: false,
+					});
 				}
 			},
 			error: function(data) 

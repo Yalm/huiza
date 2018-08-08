@@ -20,7 +20,7 @@
                     <th>Subtotal</th>
                     <td>
                         <b class="amount">
-                            {{ "S/. $total"}}
+                            {{ "S/.$total"}}
                         </b>
                     </td>
                 </tr>		
@@ -28,7 +28,7 @@
                     <th>Total</th>
                     <td>
                         <span class="amount">
-                            {{ "S/. $total"}}
+                            {{ "S/.$total"}}
                         </span>
                     </td>
                 </tr>

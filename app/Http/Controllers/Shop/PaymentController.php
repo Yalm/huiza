@@ -11,6 +11,7 @@ use App\Order;
 use App\Product;
 
 use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\OrderRequest;
 
 class PaymentController extends Controller
 {
@@ -25,7 +26,7 @@ class PaymentController extends Controller
             'total' => $total
         ]);
     }
-    public function sucess(Request $request)
+    public function sucess(OrderRequest $request)
     {
         if($request->deposit)
         {

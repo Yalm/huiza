@@ -38,5 +38,26 @@ class Order extends Model
       return $this->belongsTo(State::class);
   
     }
+    public function getColorState()
+    {
+		switch ($this->attributes['state_id'] ) 
+		{
+			case 1:
+				return 'state_red';
+				break;
+			case 2:
+				return 'state_green';
+				break;
+			case 3:
+				return 'state_yellow';
+				break;
+			case 4:
+				return 'state_blue';
+				break;
+			default:
+				echo "state_error";
+		}
+
+    }
     
 }

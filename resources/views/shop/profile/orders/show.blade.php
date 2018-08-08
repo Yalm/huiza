@@ -4,25 +4,25 @@
     <div class="col-md-12">
         <h1 class="p-b-40 cl5"> MI PEDIDO</h1>    
     </div>
-    <div class="col-5 cl5 p-t-20">
-        <div class="row">
-            <div class="col-6 p-b-10">
-                <h5 class="p-r-10"><b>Nombre:</b>{{ $order->name}}</h5> 
+    <div class="col-md-5 cl5 my-3">
+        <h5 class="my-3"><b>Cliente</b></h5>
+        <div class="media">
+            <div class="col-md-4 col-4">
+                <img class="img-fluid rounded-circle" src="{{ asset('images/avatar.png') }}" alt="Generic placeholder image">
             </div>
-            <div class="col-6 p-b-10">
-                <h5 class="p-r-10"><b>Apellidos:</b>{{ $order->surnames }}</h5>
+            <div class="media-body">
+                <h5 class="mt-0 text-capitalize">{{ $order->customer->name }} <small><i>{{ $order->customer->phone }}</i></small></h5>
+                {{ $order->customer->email }}<br>
+                {{ $order->customer->address }}
             </div>
-            <div class="col-6 p-b-10">
-                <h5><b>Telefono\Celular:</b>{{ $order->phone}}</h5> 
-            </div>
-            <div class="col-6 p-b-10">
-                <h5 ><b>Dirección:</b>{{ $order->address }}</h5>
-            </div>
-            <div clas="col-6 p-b-10">
-                <h5><b>Correo Electronico:</b>{{ $order->email }}</h5>     
-            </div>
-        </div>
+        </div>  
+        <h5 class="my-4"><b>Datos de facturación</b></h5>
+        <h6 class="my-3">Nombre: {{ $order->name }}</h6>
+        <h6 class="my-3">Apellidos: {{ $order->surnames }}</h6>
+        <h6 class="my-3">Telefono/Celuar: {{ $order->phone }}</h6>
+        <h6 class="my-3">Dirección: {{ $order->address }}</h6>                        
     </div> 
+
     <div class="col-md-7">
         <div class="table-responsive checkout-review-order">
             <table class="table cl5">
@@ -45,7 +45,7 @@
                         <th>Total</th>
                         <td>
                             <span class="amount">
-                                {{ "S/. $order->total"}}
+                               S/.{{ $order->getTotalPrice() }}
                             </span>
                         </td>
                     </tr>

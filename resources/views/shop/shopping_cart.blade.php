@@ -82,7 +82,7 @@
 
               <div class="size-209">
                 <span class="mtext-110 cl5 subtotal">
-                  {{ $total }}
+                  {{ "S/.$total" }}
                 </span>
               </div>
             </div>
@@ -95,7 +95,7 @@
 
               <div class="size-209 p-t-1">
                 <span class="mtext-110 cl5 total">
-                  {{ $total }}
+                  {{ "S/.$total" }}
                 </span>
               </div>
             </div>

@@ -41,9 +41,12 @@ Route::group(['middleware' => 'auth:web'], function ()
         Route::get('order/{order}/canceled','Shop\OrderController@canceled');
         
     });
-
-    Route::get('/checkout', 'Shop\PaymentController@checkout');
-    Route::post('/checkout', 'Shop\PaymentController@sucess');
+    
+    Route::group(['middleware' => 'cart'], function ()
+    {
+        Route::get('/checkout', 'Shop\PaymentController@checkout');
+        Route::post('/checkout', 'Shop\PaymentController@sucess');
+    });
 });
 
 Auth::routes();

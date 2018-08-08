@@ -10,9 +10,11 @@
 		<div class="container">
 			<form class="row" method="post" action="{{ url('checkout') }}">
 				@csrf
-                @include('shop.checkout.address')
-                @include('shop.checkout.cart')
-                @include('shop.checkout.method')
+				<div class="col-md-7">
+					@include('shop.checkout.address')
+					@include('shop.checkout.method')
+				</div>
+                @include('shop.checkout.cart')				
             </form>
         </div>
     </section>

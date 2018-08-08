@@ -30,7 +30,7 @@
                 <tr>
                     <th scope="row" class="text-uppercase text-truncate" style="max-width: 280px;">{{ $order->getIdFormat() }}</th>
                     <td>{{ $order->created_at->format('F d \,\ Y ')  }}</td>
-                    <td class="text-capitalize">{{ $order->state->name }}</td>
+                    <td class="text-capitalize {{ $order->getColorState() }}">{{ $order->state->name }}</td>
                     <td>S/.{{ $order->getTotalPrice() }}</td>
                     <td>
                     @if($order->state->name == 'cancelado' || $order->state->name == 'cerrado' || $order->state->name == 'aprobado' || $order->state->name == 'denegado')
