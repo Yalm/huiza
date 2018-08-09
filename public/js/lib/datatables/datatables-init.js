@@ -1,4 +1,5 @@
-$(document).ready(function() {
+$(document).ready(function() 
+{
         $('#myTable').DataTable();
         $(document).ready(function() {
             var table = $('#example').DataTable({
@@ -36,10 +37,23 @@ $(document).ready(function() {
                 }
             });
         });
-    });
+
+        
+});
     $('#example23').DataTable({
         dom: 'Bfrtip',
         buttons: [
             'copy', 'csv', 'excel', 'pdf', 'print'
         ]
     });
+
+
+$(document).ready(function() 
+{
+    $('#customerOrder').dataTable({
+        "bLengthChange": false,
+        "bFilter": true,
+        "bInfo": false,
+        "lengthMenu": [[4, 10, 50, -1],[4, 10, 50, "All"]],
+        "bAutoWidth": false });
+});

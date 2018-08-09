@@ -54,7 +54,15 @@ class CategoryController extends Controller
 
     public function destroy($id)
     {
-        Category::findOrFail($id)->delete();
+        $cateogry = Category::findOrFail($id);
+
+        if($cateogry->products()->count() > 0)
+        {
+            return back()->with('error','¡Error!, Su categoría esta relacionada.');
+        }
+
+        $cateogry->delete();
+
         return back()->with('success','Su categoría ha sido eliminada con éxito.');
     }
 }

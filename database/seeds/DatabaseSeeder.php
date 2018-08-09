@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
 
         $customers->each(function(App\Customer $customer)
         {
-            factory(App\Order::class,3)->create(['customer_id'=> $customer->id])
+            factory(App\Order::class,8)->create(['customer_id'=> $customer->id])
                                         ->each(function(App\Order $order)
             {
                 

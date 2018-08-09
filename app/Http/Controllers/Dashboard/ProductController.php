@@ -87,7 +87,13 @@ class ProductController extends Controller
 
     public function destroy($id)
     {
-        $product = Product::find($id);
+        $product = Product::findOrFail($id);
+
+        if($product->orders()->count() > 0)
+        {
+            return back()->with('error','¡Error!, Su producto esta relacionado.');
+        }
+
         \File::delete($product->image);
         $product->delete();
         return back()->with('success','Su producto ha sido eliminado con éxito.');

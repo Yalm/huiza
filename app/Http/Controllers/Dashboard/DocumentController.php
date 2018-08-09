@@ -43,7 +43,15 @@ class DocumentController extends Controller
 
     public function destroy($id)
     {
-        Document::findOrFail($id)->delete();
-        return back()->with('success','Su categoría ha sido eliminada con éxito.');
+        $document = Document::findOrFail($id);
+
+        if($document->customers()->count() > 0)
+        {
+            return back()->with('error','¡Error!, Documento de identidad relacionado.');
+        }
+
+        $document->delete();
+
+        return back()->with('success','Su Documento de identidad ha sido eliminado con éxito.');
     }
 }

@@ -92,7 +92,7 @@
                     <ul id="sidebarnav">
                     <li class="nav-devider"></li>
                     <li class="nav-label"></li>
-                    <li><a href="{{ url('admin/login') }}" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">Inicio</span></a>
+                    <li><a href="{{ url('admin') }}" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">Inicio</span></a>
                     </li>
                     <li> <a class="has-arrow" href="#" aria-expanded="false"><i class="fa fa-archive"></i><span class="hide-menu">Productos</span></a>
                         <ul aria-expanded="false" class="collapse">
@@ -112,10 +112,16 @@
                         <ul aria-expanded="false" class="collapse">
                             <li><a href="index-2.html">Todos los usuario </a></li>
                             <li><a href="index1.html">Añadir nuevo </a></li>
+                        </ul>
+                    </li>
+
+                    <li> <a class="has-arrow" href="#" aria-expanded="false"><i class="fa fa-users"></i><span class="hide-menu">Clientes</span></a>
+                        <ul aria-expanded="false" class="collapse">
+                            <li><a href="{{ url('admin/customer') }}">Todos los clientes </a></li>
                             <li><a href="{{ url('admin/document') }}">Documento de identidad</a></li>
                         </ul>
                     </li>
-                    <li><a href="{{ url('admin/customer') }}" aria-expanded="false"><i class="fa fa-users"></i><span class="hide-menu">Clientes</span></a>
+
                     </li>
                     <li><a href="{{ url('admin/report') }}" aria-expanded="false"><i class="fa fa-file"></i><span class="hide-menu">Reportes</span></a>
                     </li>

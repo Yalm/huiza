@@ -3,17 +3,20 @@
 <!-- Bread crumb -->
 <div class="row page-titles card_ch">
     <div class="col-md-5 align-self-center">
-        <h3 class="text-white">Todos los productos</h3> </div>
+        <h3 class="text-white">Todos los clientes</h3> </div>
     <div class="col-md-7 align-self-center">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a class="hov_a_ch" href="javascript:void(0)">Inicio</a></li>
-            <li class="breadcrumb-item active">Todos los productos</li>
+            <li class="breadcrumb-item active">Todos los clientes</li>
         </ol>
     </div>
 </div>
 <!-- End Bread crumb -->
 @if (session('success'))
     <input type="hidden" id="statusProduct" value="{{ session('success') }}">
+@endif
+@if (session('error'))
+    <input type="hidden" id="errorProduct" value="{{ session('error') }}">
 @endif
 <!-- Container fluid  -->
 <div class="container-fluid">
@@ -22,30 +25,27 @@
         <div class="col-12">
             <div class="card card_ch">
                 <div class="card-body">
-                    <h4 class="card-title"><a  href="{{ url('admin/product/create') }}" class="btn btn-primary">Nuevo Producto</a></h4>
                     <div class="table-responsive">
                         <table id="myTable" class="table table-striped ">
                             <thead>
                                 <tr>
                                     <th>Nombre</th>
                                     <th>Apellidos</th>
-                                    <th>Imagen</th>
-                                    <th>Stock</th>
-                                    <th>Categoria</th>
+                                    <th>Correo</th>
+                                    <th>Celular</th>
                                     <th>Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>         
-                     			@foreach ($products as $product)
+                     			@foreach ($customers as $customer)
 									<tr>
-										<td>{{ $product->name }}</td>
-										<td>{{ "S/.$product->price" }}</td>
-										<td><img src="{{ asset($product->image) }}" width="50"></td>
-										<td>{{ $product->stock }}</td>
-										<td>{{ $product->category->name }}</td>
+										<td>{{ $customer->name }}</td>
+										<td>{{ $customer->surnames }}</td>
+										<td>{{ $customer->email }}</td>
+										<td>{{ $customer->phone }}</td>
 										<td class="form-inline">
-										    <a href="{{ url("admin/product/$product->id/edit") }}" class="btn btn-primary"><i class="fa fa-refresh" aria-hidden="true"></i></a>
-                                            <a href="javascript:void(0)" id="deleteProduct" data-url="{{url("admin/product/$product->id")}}" class="btn btn-primary"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+										    <a href="{{ url("admin/customer/$customer->id/edit") }}" class="btn btn-primary"><i class="fa fa-refresh" aria-hidden="true"></i></a>
+                                            <a href="javascript:void(0)" id="deleteCustomer" data-url="{{url("admin/customer/$customer->id")}}" class="btn btn-primary"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
 										</td>
 									</tr>
                             	@endforeach
@@ -59,7 +59,7 @@
     <!-- End PAge Content -->
 </div>
 <!-- End Container fluid  -->
-<form method="post" role="form" id="deleteProductForm">
+<form method="post" role="form" id="deleteCustomerForm">
     @csrf
     <input name="_method" type="hidden" value="DELETE">
 </form>
@@ -70,12 +70,12 @@
 	<script src="{{ asset('js/lib/datatables/datatables-init.js') }}"></script>
     <script>
     $(document).ready(function(){
-        $('#deleteProduct').click(function(event) 
+        $('#deleteCustomer').click(function(event) 
         {
             var urlSend = $(this).data('url');
             swal({
                 title: "¿Estás seguro de eliminar?",
-                text: "No podrás recuperar este producto jamas !!",
+                text: "No podrás recuperar este cliente jamas !!",
                 type: "warning",
                 showCancelButton: true,
                 confirmButtonColor: "#BED001",
@@ -88,12 +88,12 @@
                 {
                     if (isConfirm) 
                     {
-                        $('#deleteProductForm').attr('action', urlSend);
-                        $('#deleteProductForm').trigger('submit');
+                        $('#deleteCustomerForm').attr('action', urlSend);
+                        $('#deleteCustomerForm').trigger('submit');
                     }
                     else 
                     {
-                        swal("Cancelado !!", "Oye, tu producto esta seguro !!", "error");
+                        swal("Cancelado !!", "Oye, tu cliente esta seguro !!", "error");
                     }
                 });
         });

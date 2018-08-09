@@ -15,6 +15,9 @@
 @if (session('success'))
     <input type="hidden" id="statusProduct" value="{{ session('success') }}">
 @endif
+@if (session('error'))
+    <input type="hidden" id="errorProduct" value="{{ session('error') }}">
+@endif
 <!-- Container fluid  -->
 <div class="container-fluid">
 <!-- Start Page Content -->

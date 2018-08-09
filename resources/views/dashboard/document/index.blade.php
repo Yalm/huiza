@@ -3,17 +3,20 @@
 <!-- Bread crumb -->
 <div class="row page-titles card_ch">
     <div class="col-md-5 align-self-center">
-        <h3 class="text-white">Todos los productos</h3> </div>
+        <h3 class="text-white">Todos los documentos de identidad</h3> </div>
     <div class="col-md-7 align-self-center">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a class="hov_a_ch" href="javascript:void(0)">Inicio</a></li>
-            <li class="breadcrumb-item active">Todos los productos</li>
+            <li class="breadcrumb-item active">Todos los documentos de identidad</li>
         </ol>
     </div>
 </div>
 <!-- End Bread crumb -->
 @if (session('success'))
     <input type="hidden" id="statusProduct" value="{{ session('success') }}">
+@endif
+@if (session('error'))
+    <input type="hidden" id="errorProduct" value="{{ session('error') }}">
 @endif
 <!-- Container fluid  -->
 <div class="container-fluid">
@@ -22,7 +25,7 @@
 	<div class="col-12">
 		<div class="card card_ch">
 			<div class="card-body">
-				<h4 class="card-title"><a id="CreateDocument" href="javascript:void(0)" class="btn btn-primary">Nueva Categoría</a></h4>
+				<h4 class="card-title"><a id="CreateDocument" href="javascript:void(0)" class="btn btn-primary">Nuevo documento de identidad</a></h4>
 				<div class="table-responsive">
 					<table id="myTable" class="table table-striped">
 						<thead>
