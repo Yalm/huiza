@@ -12,6 +12,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call(StateSeeder::class);
+        $this->call(DocumentSeeder::class);
         
         $categories=factory(App\Category::class, 6)->create();
 

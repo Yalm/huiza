@@ -22,7 +22,13 @@ class CreateCustomersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->boolean('actived')->default(true);  
-            $table->boolean('verified')->default(false);             
+            $table->boolean('verified')->default(false);
+
+            $table->integer('document_id')->nullable()->unsigned();
+            $table->foreign('document_id')->references('id')->on('documents');
+            
+            $table->string('document_number',20)->nullable();
+
             $table->rememberToken();
             $table->timestamps();
         });

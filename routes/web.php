@@ -76,6 +76,7 @@ Route::prefix('admin')->group(function ()
         Route::resource('/category','Dashboard\CategoryController');
         Route::resource('/order','Dashboard\OrderController');
         Route::resource('/customer','Dashboard\CustomerController');
+        Route::resource('/document','Dashboard\DocumentController');
         Route::get('/profile','Dashboard\UserController@profile');
     });
 });

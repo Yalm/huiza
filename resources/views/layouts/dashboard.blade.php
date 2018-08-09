@@ -112,6 +112,7 @@
                         <ul aria-expanded="false" class="collapse">
                             <li><a href="index-2.html">Todos los usuario </a></li>
                             <li><a href="index1.html">Añadir nuevo </a></li>
+                            <li><a href="{{ url('admin/document') }}">Documento de identidad</a></li>
                         </ul>
                     </li>
                     <li><a href="{{ url('admin/customer') }}" aria-expanded="false"><i class="fa fa-users"></i><span class="hide-menu">Clientes</span></a>
