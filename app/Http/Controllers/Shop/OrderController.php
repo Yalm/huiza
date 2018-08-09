@@ -52,7 +52,7 @@ class OrderController extends Controller
             Image::make($voucher)->save("images/vouchers/$voucherHash");
 
             $order->voucher = "images/vouchers/$voucherHash";
-            $order->state_id = '3';
+            $order->state_id = '4';
             $order->save();
 
             return back()->with('success', 'Comprobante de pago subido con extio!');

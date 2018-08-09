@@ -24,7 +24,7 @@
 						{{ csrf_field() }}
 						<div class="form-group col-md-12">
 							<label class="control-label">Nombre</label>
-							<input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text" name="name" placeholder="Nombre del producto">
+							<input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text" name="name" placeholder="Nombre del producto" value="{{ old('name') }}">
 							@if ($errors->has('name'))
 								<span class="form-control-feedback text-danger">
 									<strong>{{ $errors->first('name') }}</strong>
@@ -33,7 +33,7 @@
 						</div>
 
 						<div class="form-group col-md-6">
-							<input class="form-control {{ $errors->has('price') ? 'is-invalid' : '' }}" type="text" name="price"  placeholder="Precio">
+							<input class="form-control {{ $errors->has('price') ? 'is-invalid' : '' }}" type="text" name="price"  placeholder="Precio" value="{{ old('price') }}">
 							@if ($errors->has('price'))
 								<span class="form-control-feedback text-danger">
 									<strong>{{ $errors->first('price') }}</strong>
@@ -42,7 +42,7 @@
 						</div>
 
 						<div class="form-group col-md-6">
-							<input class="form-control {{ $errors->has('stock') ? 'is-invalid' : '' }}" type="text" name="stock" placeholder="Stock">
+							<input class="form-control {{ $errors->has('stock') ? 'is-invalid' : '' }}" type="text" name="stock" placeholder="Stock" value="{{ old('stock') }}">
 							@if ($errors->has('stock'))
 								<span class="form-control-feedback text-danger">
 									<strong>{{ $errors->first('stock') }}</strong>
@@ -51,7 +51,7 @@
 						</div>
 						<div class="form-group col-md-12">
 							<label for="exampleTextarea">Caracteristicas</label>
-							<textarea class="form-control {{ $errors->has('characteristics') ? 'is-invalid' : '' }}" name="characteristics" rows="3"></textarea>
+							<textarea class="form-control {{ $errors->has('characteristics') ? 'is-invalid' : '' }}" name="characteristics" rows="3">{{ old('characteristics') }}</textarea>
 							@if ($errors->has('characteristics'))
 								<span class="form-control-feedback text-danger">
 									<strong>{{ $errors->first('characteristics') }}</strong>
@@ -61,7 +61,7 @@
 
 						<div class="form-group col-md-12">
 							<label for="exampleTextarea">Descripcion</label>
-							<textarea class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}" name="description" rows="3"></textarea>
+							<textarea class="form-control {{ $errors->has('description') ? 'is-invalid' : '' }}" name="description" rows="3">{{ old('description') }}</textarea>
 							@if ($errors->has('description'))
 								<span class="form-control-feedback text-danger">
 									<strong>{{ $errors->first('description') }}</strong>

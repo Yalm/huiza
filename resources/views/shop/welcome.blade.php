@@ -4,22 +4,23 @@
     <section class="section-slide">
         <div class="wrap-slick1">
             <div class="slick1">
-                <div class="item-slick1" style="background-image: url({{ asset('images/slide-01.jpg') }} );">
+
+             	<div class="item-slick1" style="background-image: url({{ asset('images/slide-01.jpg') }} );">
                     <div class="container h-full">
                         <div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
                             <div class="layer-slick1 animated visible-false" data-appear="fadeInUp" data-delay="800">
                                 <h1 class="ltext-151 cl2 p-t-19 p-b-5 respon1">
-                                     Lorem ipsum dolor sit amet
+                                    Bicletas y Repuestos
                                 </h1>
                              </div>
                             <div class="layer-slick1 animated visible-false m-tb-15" data-appear="fadeInDown" data-delay="1000">
                                 <p class="ltext-80 cl2   respon2">
-                                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do <br>eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+									Todo lo que necesitas en una bicleta, repuestos y accesorios de bicleta encuéntralo en Comercial Huiza.
                                 </p>
                             </div>
                             <div class="layer-slick1 animated visible-false" data-appear="zoomIn" data-delay="1600">
                                 <a href="{{ url('/shop') }}" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
-                                    Comprar ahora
+                                    Ir a la tienda
                                 </a>
                             </div>
                          </div>
@@ -31,24 +32,25 @@
                         <div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
                             <div class="layer-slick1 animated visible-false" data-appear="rollIn" data-delay="0">
                                 <span class="ltext-101 cl2 respon2">
-                                    Men New-Season
+                                    Nuevos Modelos
                                 </span>
                             </div>
 
                             <div class="layer-slick1 animated visible-false" data-appear="lightSpeedIn" data-delay="800">
                                 <h2 class="ltext-201 cl2 p-t-19 p-b-43 respon1">
-                                    Jackets & Coats
+                                    Estilo en dos ruedas
                                 </h2>
                             </div>
 
                             <div class="layer-slick1 animated visible-false" data-appear="slideInUp" data-delay="1600">
                                 <a href="{{ url('/shop') }}" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
-                                Comprar ahora
+									Quiero ver más
                                 </a>
                             </div>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
@@ -60,19 +62,19 @@
 					<!-- Block1 -->
 					<div class="block1 wrap-pic-w">
 						<img src=" {{ asset('images/banner-01.jpg') }}" alt="IMG-BANNER">
-						<a href="product.html" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
+						<a href="{{ url('shop') }}" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
 							<div class="block1-txt-child1 flex-col-l">
 								<span class="block1-name ltext-102 trans-04 p-b-8">
-									Lorem ipsum 
+									Conquista la cima 
 								</span>
 								<span class="block1-info stext-102 trans-04">
-									Lorem ipsum dolor sit amet
+									Bicletas montaña
 								</span>
 							</div>
 
 							<div class="block1-txt-child2 p-b-4 trans-05">
 								<div class="block1-link stext-101 cl0 trans-09">
-									Comprar
+									Ir a la tienda
 								</div>
 							</div>
 						</a>
@@ -84,20 +86,20 @@
 					<div class="block1 wrap-pic-w">
 						<img src=" {{ asset('images/banner-02.jpg') }}" alt="IMG-BANNER">
 
-						<a href="product.html" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
+						<a href="{{ url('shop') }}" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
 							<div class="block1-txt-child1 flex-col-l">
 								<span class="block1-name ltext-102 trans-04 p-b-8">
-									Lorem
+									TÁNDEM PASEO
 								</span>
 
 								<span class="block1-info stext-102 trans-04">
-									Lorem ipsum dolor sit amet
+									Disfruta de una bicleta para todo
 								</span>
 							</div>
 
 							<div class="block1-txt-child2 p-b-4 trans-05">
 								<div class="block1-link stext-101 cl0 trans-09">
-									Comprar
+									Ir a la tienda
 								</div>
 							</div>
 						</a>
@@ -109,20 +111,20 @@
 					<div class="block1 wrap-pic-w">
 						<img src=" {{ asset('images/banner-03.jpg') }}" alt="IMG-BANNER">
 
-						<a href="product.html" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
+						<a href="{{ url('shop') }}" class="block1-txt ab-t-l s-full flex-col-l-sb p-lr-38 p-tb-34 trans-03 respon3">
 							<div class="block1-txt-child1 flex-col-l">
 								<span class="block1-name ltext-102 trans-04 p-b-8">
-									Lorem
+									BICLETAS DE TODO TIPO
 								</span>
 
 								<span class="block1-info stext-102 trans-04">
-									Lorem ipsum dolor sit amet
+									Descubre nuestro gran catalogo de bicletas
 								</span>
 							</div>
 
 							<div class="block1-txt-child2 p-b-4 trans-05">
 								<div class="block1-link stext-101 cl0 trans-09">
-									Comprar
+									Ir a la tienda
 								</div>
 							</div>
 						</a>

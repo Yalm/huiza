@@ -13,7 +13,7 @@ class CategoryController extends Controller
     {
         $categories = Category::all();
         return view('dashboard.category.index',[
-          'categories' => $categories,
+          'categoriesCrud' => $categories,
         ]);
     }
 

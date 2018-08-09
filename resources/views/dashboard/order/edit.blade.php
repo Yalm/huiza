@@ -35,7 +35,7 @@
 
                         <div class="form-group col-md-12">
 							<label class="control-label">Nombre</label>
-							<input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text" name="name" value="{{ $order->name }}">
+							<input class="form-control {{ $errors->has('name') ? 'is-invalid' : '' }}" type="text" name="name" value="{{ old('name', $order->name) }}">
 							@if ($errors->has('name'))
 								<span class="form-control-feedback text-danger">
 									<strong>{{ $errors->first('name') }}</strong>
@@ -43,9 +43,19 @@
 							@endif
 						</div>
 
+                        <div class="form-group col-md-12">
+							<label class="control-label">Apellidos</label>
+							<input class="form-control {{ $errors->has('surnames') ? 'is-invalid' : '' }}" type="text" name="surnames" value="{{ old('surnames', $order->surnames) }}">
+							@if ($errors->has('surnames'))
+								<span class="form-control-feedback text-danger">
+									<strong>{{ $errors->first('surnames') }}</strong>
+								</span>
+							@endif
+						</div>
+
                         <div class="form-group col-md-6">
 							<label class="control-label">Celular/Telefono</label>
-							<input class="form-control {{ $errors->has('phone') ? 'is-invalid' : '' }}" type="text" name="phone" value="{{ $order->phone }}">
+							<input class="form-control {{ $errors->has('phone') ? 'is-invalid' : '' }}" type="text" name="phone" value="{{ old('phone', $order->phone) }}">
 							@if ($errors->has('phone'))
 								<span class="form-control-feedback text-danger">
 									<strong>{{ $errors->first('phone') }}</strong>
@@ -55,7 +65,7 @@
 
                         <div class="form-group col-md-6">
 							<label class="control-label">Correo</label>
-							<input class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" type="text" name="email" value="{{ $order->email }}">
+							<input class="form-control {{ $errors->has('email') ? 'is-invalid' : '' }}" type="text" name="email" value="{{ old('email', $order->email) }}">
 							@if ($errors->has('email'))
 								<span class="form-control-feedback text-danger">
 									<strong>{{ $errors->first('email') }}</strong>
@@ -66,7 +76,7 @@
                         
                         <div class="form-group col-md-12">
 							<label class="control-label">Dirección</label>
-							<input class="form-control {{ $errors->has('address') ? 'is-invalid' : '' }}" type="text" name="address" value="{{ $order->address }}">
+							<input class="form-control {{ $errors->has('address') ? 'is-invalid' : '' }}" type="text" name="address" value="{{ old('address', $order->address) }}">
 							@if ($errors->has('address'))
 								<span class="form-control-feedback text-danger">
 									<strong>{{ $errors->first('address') }}</strong>

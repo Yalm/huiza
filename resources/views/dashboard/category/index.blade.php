@@ -32,8 +32,8 @@
 							</tr>
 							@csrf
 						</thead>
-						<tbody id="CategoryTable">         
-							@foreach ($categories as $category)
+						<tbody>         
+							@foreach ($categoriesCrud as $category)
 								<tr id="{{ "trCategoryName$category->id" }}">
 									<td>{{ $category->name }}</td>
 									<td class="text-center">
@@ -60,7 +60,6 @@
 	<script src="{{ asset('js/lib/datatables/datatables-init.js') }}"></script>
 
 <script type="text/javascript">
-	var t = $('#myTable').DataTable();
 
 	$('#CreateCategory').on("click", function() 
 	{
@@ -91,14 +90,17 @@
       				},
 					success: function(data) 
 					{
-						swal("!Oye!", "Nueva Categoría: " + inputValue, "success");						
+						swal("!Oye!", "Nueva Categoría: " + inputValue, "success");
 						
-						$('#CategoryTable').append('<tr id="trCategoryName'+ data.id +'">\
-						<td>'+ data.name +'</td> \
-						<td class="text-center">\
-							<a href="javascript:void(0)" id="updateCategory" data-id="'+data.id+'" data-name="'+data.name+'" class="btn btn-primary"><i class="fa fa-refresh" aria-hidden="true"></i></a>\
-							<a href="javascript:void(0)" id="deleteCategory" data-url="{{url("admin/category")}}/'+data.id+'" class="btn btn-primary"><i class="fa fa-trash-o" aria-hidden="true"></i></a>\
-						</tr>');
+						var datatable = $('#myTable').DataTable();
+						var trDOM = datatable.row.add( [
+							data.name,
+							"<a href='javascript:void(0)' id='updateCategory' data-id="+data.id+" data-name="+data.name+" class='btn btn-primary'><i class='fa fa-refresh' aria-hidden='true'></i></a>\
+							<a href='javascript:void(0)' id='deleteCategory' data-url='{{url('admin/category')}}/"+data.id+"' class='btn btn-primary'><i class='fa fa-trash-o' aria-hidden='true'></i></a>"
+						] ).draw().node();
+
+						$(trDOM).find('td').eq(1).addClass('text-center');
+						$(trDOM).attr('id', 'trCategoryName'+ data.id );						
 						
 					},
 					error: function(data) 
@@ -142,6 +144,7 @@
 	{
 		var name = $(this).data('name');
 		var id = $(this).data('id');
+		var rowClick = $(this).parent().parent();
 		swal({
 				title: "¡Actualizar categoría!",
 				text: "¡Escribe algo interesante!",
@@ -171,12 +174,14 @@
 					success: function(data) 
 					{
 						swal("!Oye!", "Categoría Actualizada: " + inputValue, "success");
-						$('#trCategoryName'+ data.id).replaceWith('<tr id="trCategoryName'+ data.id +'" >\
-									<td>'+data.name+'</td>\
-									<td class="text-center">\
-										<a href="javascript:void(0)" id="updateCategory" data-id="'+data.id+'" data-name="'+data.name+'" class="btn btn-primary"><i class="fa fa-refresh" aria-hidden="true"></i></a>\
-										<a href="javascript:void(0)" id="deleteCategory" data-url="{{url("admin/category")}}/'+data.id+'" class="btn btn-primary"><i class="fa fa-trash-o" aria-hidden="true"></i></a>\
-									</td></tr>');
+						var datatable = $('#myTable').DataTable();
+						datatable.row(rowClick).data([
+							data.name,
+							"<a href='javascript:void(0)' id='updateCategory' data-id="+data.id+" data-name="+data.name+" class='btn btn-primary'><i class='fa fa-refresh' aria-hidden='true'></i></a>\
+							<a href='javascript:void(0)' id='deleteCategory' data-url='{{url('admin/category')}}/"+data.id+"' class='btn btn-primary'><i class='fa fa-trash-o' aria-hidden='true'></i></a>"
+						]).draw();
+
+						rowClick.find('td').eq(1).addClass('text-center');
 					},
 					error: function(data) 
 					{

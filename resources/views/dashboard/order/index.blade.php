@@ -41,7 +41,7 @@
                                         <td>{{ $order->customer->name }}</td>
 										<td class="text-uppercase">{{ $order->getIdFormat() }}</td>
 										<td>S/.{{ $order->getTotalPrice() }}</td>
-										<td class="text-uppercase">{{ $order->state->name }}</td>                                                                                
+										<td class="text-uppercase {{ $order->getColorState() }}">{{ $order->state->name }}</td>                                                                                
 										<td class="form-inline">
 										    <a href="{{ url("admin/order/$order->id") }}" class="btn btn-primary"><i class="fa fa-eye" aria-hidden="true"></i></a>
                                             <a href="{{url("admin/order/$order->id/edit")}}" class="btn btn-primary"><i class="fa fa-refresh" aria-hidden="true"></i></a>

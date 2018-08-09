@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Order;
 use App\State;
 use App\Product;
+use App\Http\Requests\OrderRequest;
 
 class OrderController extends Controller
 {
@@ -41,13 +42,14 @@ class OrderController extends Controller
             'order' => $order
         ]);
     }
-    public function update(Request $request,$id)
+    public function update(OrderRequest $request,$id)
     {
         $order = Order::findOrFail($id);
 
         $order->products()->sync($request->products);
 
         $order->name = $request->name;
+        $order->surnames = $request->surnames;
         $order->phone = $request->phone;
         $order->email = $request->email;
         $order->address = $request->address;

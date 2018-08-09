@@ -7103,3 +7103,25 @@ body .login_fields__submit input:hover {
     display: none;
 }
 
+/* STATUS COLOR ORDER */
+
+.state_red
+{
+  color: red !important;
+}
+
+.state_yellow
+{
+  color: yellow !important;
+}
+
+.state_green
+{
+  color: green !important;
+}
+
+.state_blue
+{
+  color: blue !important;
+}
+
