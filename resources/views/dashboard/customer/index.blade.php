@@ -6,7 +6,7 @@
         <h3 class="text-white">Todos los clientes</h3> </div>
     <div class="col-md-7 align-self-center">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a class="hov_a_ch" href="javascript:void(0)">Inicio</a></li>
+            <li class="breadcrumb-item"><a class="hov_a_ch" href="{{ url('admin') }}">Inicio</a></li>
             <li class="breadcrumb-item active">Todos los clientes</li>
         </ol>
     </div>
@@ -32,7 +32,7 @@
                                     <th>Nombre</th>
                                     <th>Apellidos</th>
                                     <th>Correo</th>
-                                    <th>Celular</th>
+                                    <th>Documento de identidad</th>
                                     <th>Acciones</th>
                                 </tr>
                             </thead>
@@ -42,7 +42,7 @@
 										<td>{{ $customer->name }}</td>
 										<td>{{ $customer->surnames }}</td>
 										<td>{{ $customer->email }}</td>
-										<td>{{ $customer->phone }}</td>
+										<td>{{ $customer->document_number }}</td>
 										<td class="form-inline">
 										    <a href="{{ url("admin/customer/$customer->id/edit") }}" class="btn btn-primary"><i class="fa fa-refresh" aria-hidden="true"></i></a>
                                             <a href="javascript:void(0)" id="deleteCustomer" data-url="{{url("admin/customer/$customer->id")}}" class="btn btn-primary"><i class="fa fa-trash-o" aria-hidden="true"></i></a>

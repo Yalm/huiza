@@ -17,10 +17,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <p class="text-center p-b-20">¡Ingrese su correo electrónico y le enviaremos las instrucciones!
-
-</p>
-
+                    <p class="text-center p-b-20">¡Ingrese su correo electrónico y le enviaremos las instrucciones!</p>
                     <form method="POST" action="{{ route('password.email') }}">
                         @csrf
 

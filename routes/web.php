@@ -78,5 +78,8 @@ Route::prefix('admin')->group(function ()
         Route::resource('/customer','Dashboard\CustomerController');
         Route::resource('/document','Dashboard\DocumentController');
         Route::get('/profile','Dashboard\UserController@profile');
+        Route::resource('/user','Dashboard\UserController');
+        Route::get('/changePassword','Dashboard\UserController@ShowchangePassword');
+        Route::post('/changePassword','Dashboard\UserController@changePassword')->name('UserChangePassword');
     });
 });

@@ -14,6 +14,14 @@ class CustomerController extends Controller
     {
         $customers = Customer::all();
 
+        $customers->each(function($customers)
+        {
+            if($customers->document_number)
+            {
+                $customers->document_number = $customers->document['name'] .':'.$customers->document_number;                
+            }
+        });
+
         return view('dashboard.customer.index',[
             'customers' => $customers
         ]);

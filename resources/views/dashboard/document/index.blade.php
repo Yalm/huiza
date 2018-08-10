@@ -6,7 +6,7 @@
         <h3 class="text-white">Todos los documentos de identidad</h3> </div>
     <div class="col-md-7 align-self-center">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a class="hov_a_ch" href="javascript:void(0)">Inicio</a></li>
+            <li class="breadcrumb-item"><a class="hov_a_ch" href="{{ url('admin') }}">Inicio</a></li>
             <li class="breadcrumb-item active">Todos los documentos de identidad</li>
         </ol>
     </div>

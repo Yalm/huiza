@@ -39,10 +39,12 @@ class UserResetPasswordController extends Controller
     {
         $this->middleware('guest:user');
     }
+
     public function guard()
     {
       return Auth::guard('user');
     }
+    
     public function broker()
     {
       return Password::broker('users');
