@@ -9,6 +9,7 @@ use App\Customer;
 use Auth;
 use App\Order;
 use App\Product;
+use App\Document;
 
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\OrderRequest;
@@ -20,10 +21,13 @@ class PaymentController extends Controller
         $cart = Cart::content();
         $total = Cart::subtotal();
         $customer = Customer::findOrFail(Auth::user()->id);
+        $documents = Document::all();
+
         return view('shop.checkout.index',[
             'customer' => $customer,
             'cart' => $cart,
-            'total' => $total
+            'total' => $total,
+            'documents' => $documents
         ]);
     }
     public function sucess(OrderRequest $request)
@@ -46,8 +50,10 @@ class PaymentController extends Controller
             'name' => $request->name,
             'surnames' => $request->surnames,
             'email' =>$request->email,
+            'document_id' => $request->document_id,
+            'document_number' => $request->document_number,
             'phone' => $request->phone,
-            'address' => $request->address,
+            'note_customer' => $request->note_customer,
             'state_id' => '3',
         ]);
         
@@ -59,7 +65,9 @@ class PaymentController extends Controller
 
         Cart::destroy();        
         
-        return view('shop.checkout.sucess');
+        return view('shop.checkout.success',[
+            'order' => $meOrder
+        ]);
     }
 
 }

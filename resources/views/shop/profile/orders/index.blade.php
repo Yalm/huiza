@@ -27,17 +27,17 @@
             </thead>
             <tbody>
                 @foreach($orders as $order)
-                <tr>
+                <tr class="text-center">
                     <th scope="row" class="text-uppercase text-truncate" style="max-width: 280px;">{{ $order->getIdFormat() }}</th>
                     <td>{{ $order->created_at->format('F d \,\ Y ')  }}</td>
-                    <td class="text-capitalize {{ $order->getColorState() }}">{{ $order->state->name }}</td>
+                    <td class="text_comer_h {{ $order->getColorState() }}">{{ $order->state->name }}</td>
                     <td>S/.{{ $order->getTotalPrice() }}</td>
                     <td>
-                    @if($order->state->name == 'cancelado' || $order->state->name == 'cerrado' || $order->state->name == 'aprobado' || $order->state->name == 'denegado')
+                    @if($order->state->id == 1 || $order->state->id == 5 || $order->state->id == 2)
                         <a href="{{ url("profile/order/$order->id") }}" class="fs-20 hov-cl1 cl5 p-r-5"> 
                             <i class="zmdi zmdi-eye"></i>
                         </a>
-                    @elseif($order->state->name == 'falta de pago' || $order->state->name == 'pendiente de revisión')
+                    @elseif($order->state->id == 3 || $order->state->id == 4)
                         <a href="{{ url("profile/order/$order->id/canceled") }}" class="fs-20 hov-cl1 cl5 p-r-5"> 
                             <i class="zmdi zmdi-close"></i>
                         </a>

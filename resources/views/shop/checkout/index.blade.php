@@ -12,7 +12,6 @@
 				@csrf
 				<div class="col-md-7">
 					@include('shop.checkout.address')
-					@include('shop.checkout.method')
 				</div>
                 @include('shop.checkout.cart')				
             </form>

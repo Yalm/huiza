@@ -26,7 +26,9 @@ class OrderRequest extends FormRequest
         return [
             'name' => 'required|max:191|string',
             'surnames' => 'required|max:191|string',
-            'address'  => 'required|max:191|string',
+            'note_customer'  => 'nullable|max:500|string',
+            'document_id' => 'nullable|numeric',
+            'document_number' => 'nullable|numeric|digits_between:08,20',
             'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/',
             'email' => 'required|email|max:191',
             'voucher' => 'nullable|image',    

@@ -7,7 +7,7 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class UserResetPasswordNotification extends Notification
+class CustomerResetPasswordNotification extends Notification
 {
     use Queueable;
     public $token;
@@ -48,7 +48,7 @@ class UserResetPasswordNotification extends Notification
                     ->line('Si no solicitó restablecer la contraseña, no se requieren más acciones.');    */             
     
         return (new MailMessage)->view(
-            'emails.user_forgot', ['token' => route('user.password.reset', $this->token)]
+            'emails.user_forgot', ['token' => route('password.reset', $this->token)]
         );
     }
 

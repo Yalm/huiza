@@ -38,6 +38,9 @@ Input, textarea : 14px/1.6 '', Arial, sans-serif;
 
 /*//////////////////////////////////////////////////////////////////
 [ FONT ]*/
+
+@import url('https://fonts.googleapis.com/css?family=Nothing+You+Could+Do');
+
 @import url('https://fonts.googleapis.com/css?family=Jua');
 
 @font-face {
@@ -1917,8 +1920,10 @@ input.num-product::-webkit-inner-spin-button {
 
 .wrap-table-shopping-cart {
   overflow: auto;
+  /*
   border-left: 1px solid #e6e6e6;
   border-right: 1px solid #e6e6e6;
+  */
 }
 
 .table-shopping-cart {
@@ -1928,8 +1933,10 @@ input.num-product::-webkit-inner-spin-button {
 }
 
 .table-shopping-cart tr {
+  /*
   border-top: 1px solid #e6e6e6;
   border-bottom: 1px solid #e6e6e6;
+  */
 }
 
 .table-shopping-cart .column-1 {
@@ -1945,6 +1952,7 @@ input.num-product::-webkit-inner-spin-button {
 .table-shopping-cart .column-3 {
   width: 120px;
   font-size: 16px;
+  color: rgba(84,84,84,0.8);
 }
 
 .table-shopping-cart .column-4 {
@@ -1956,7 +1964,9 @@ input.num-product::-webkit-inner-spin-button {
   width: 172px;
   padding-right: 50px;
   text-align: right;
-  font-size: 16px;
+  color: #545454;
+  font-weight: 700;
+  font-size: 1.180rem;
 }
 
 .table-shopping-cart .table_row {
@@ -1983,7 +1993,7 @@ input.num-product::-webkit-inner-spin-button {
 
 .table-shopping-cart td {
   font-family: Poppins-Regular;
-  color: #555;
+  color: #000;
   line-height: 1.6;
 }
 
@@ -2962,12 +2972,20 @@ input.num-product::-webkit-inner-spin-button {
   top: 15px;
   left: 10px;
 }
+.text_comer_h:first-letter
+{
+  text-transform:uppercase;
+}
+.text_comer_h
+{
+  font-weight: 700!important;
+}
 
 
 
 /*---------------------------------------------*/
 .how-itemcart1 {
-  width: 60px;
+  width: 90px;
   position: relative;
   margin-right: 20px;
   cursor: pointer;
@@ -3680,6 +3698,20 @@ input.num-product::-webkit-inner-spin-button {
     padding: 10px 40px 40px;
     position: relative;
   }
+  .checkout-review-order .custom-control-input:checked~.custom-control-indicator 
+  {
+    color: #000000;
+    background-color: #1a1b1d;
+  }
+  .checkout-review-order .hover_ch
+  {
+    color: #BED001;
+  }
+  .checkout-review-order .hover_ch:hover
+  {
+    color: rgb(219, 235, 43);
+  }
+
 
   .shop_table {
     border: 1px solid rgba(0,0,0,.1);
@@ -3717,3 +3749,157 @@ tfoot .order-total .amount {
   color: blue;
 }
 
+/* TABLE COMERCIAL HUIZA */
+
+.table_ch {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 1rem;
+  background-color: transparent;
+  border-collapse: collapse;
+}
+.table_ch .title {
+  border-bottom: 1px solid #DEDEDE;
+}
+.table_ch .order_total_1
+{
+  border-top: 1px solid #DEDEDE;
+}
+
+.table_ch td, .table_ch th 
+{
+  padding-right: .75rem;
+  padding-left: .75rem;
+  padding-top: 1.50rem;
+  padding-bottom: 1.50rem;
+}
+.table_ch .cart_items
+{
+  border-top: 1px solid #DEDEDE;
+  border-bottom: 1px solid #DEDEDE;
+}
+/* CART EMPTY */
+.wc-backward {
+  font-size: 0.8125em;
+  font-weight: 700;
+  padding-bottom: 5px;
+  border-bottom: 1px solid;
+  text-transform: uppercase;
+  color: #c2cf19;
+}
+
+.wc-backward:hover {
+  color: #eefa4e;
+}
+.cart_empty i
+{
+  font-weight: normal;
+  font-size: 180px;
+  line-height: 220px;
+}
+.cart_empty p
+{
+  font-size: 3.55rem;
+  line-height: 1.2em;
+}
+.cart_empty a
+{
+  font-size: 1.25rem;
+  line-height: 1.2em;
+}
+
+/* ABOUT PAGE */
+.about_page 
+{
+  background: #000;
+}
+.about_page .title
+{
+  font-size: 72.611px;
+  padding-top: 150px;
+  color: #ffffff;
+  margin: -0.13em 0 15px;
+  text-transform: capitalize;
+  line-height: 1;
+  text-align: center;
+  font-weight: 900;
+}
+.about_page .sub_title
+{
+  color: #ffffff;
+  padding-top: 20px;
+  text-align: center;
+}
+.about_page .separator
+{
+  height: 1px;
+  border-top: 1px solid #EBEBEB;
+  display: block;
+  position: relative;
+  top: 1px;
+  width: 100%;
+}
+.about_page .mision
+{
+  font-family: 'Nothing You Could Do', cursive;
+}
+.about_page .thanks
+{
+  color: #ffffff;
+  text-align: left;
+  font-family: Nothing You Could Do;
+  font-weight: 400;
+  font-style: normal;
+  padding-top: 20px;
+}
+/* SUCCESS ORDER */
+
+.thankyou-order-received 
+{
+  background: #8cbd8c;
+  font-size: 16px;
+  font-size: 1.50rem;
+  font-weight: 700;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+}
+.wc-bacs-bank-details-heading
+{
+  text-transform: uppercase;
+  margin: 30px 0;
+  color: #000000;
+}
+
+.woocommerce ul.order_details 
+{
+  padding-top: 20px;
+  background-color: rgba(84,84,84,0.25);
+  padding-bottom: 20px;
+  color: #545454;
+}
+.woocommerce ul.order_details li
+{
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.woocommerce ul.order_details_payment li 
+{
+  text-transform: uppercase;
+  font-size: 1.25rem;
+  border-right: 1px dashed #d3ced2;
+  padding: 10px;
+}
+.woocommerce ul.order_details_payment li:last-child 
+{
+  border: none;
+}
+/*  TEXT PRE WRAP */
+
+.text-pre-wrap-ch
+{
+  white-space: normal;
+  text-transform: uppercase!important;
+  
+}

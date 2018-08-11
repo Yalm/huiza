@@ -2,7 +2,7 @@
 @section('main')
 <div class="row">
     <div class="col-md-12">
-        <h1 class="p-b-40 cl5"> MI PEDIDO</h1>    
+        <h2 class="p-b-40 cl5 text-uppercase">PEDIDO {{ $order->getIdFormat() }}</h2>    
     </div>
     <div class="col-md-5 cl5 my-3">
         <h5 class="my-3"><b>Cliente</b></h5>

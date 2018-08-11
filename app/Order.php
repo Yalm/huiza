@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Crypt;
 
 class Order extends Model
 {
@@ -21,6 +22,11 @@ class Order extends Model
 
     public function getIdFormat()
     {
+		$parameter =[
+            'id' =>1,
+        ];
+	$parameter= Crypt::encrypt($parameter);
+	
       $id = md5($this->attributes['id'] . $this->attributes['created_at'] );
       return $id;
     }
@@ -58,6 +64,11 @@ class Order extends Model
 				echo "state_error";
 		}
 
+	}
+	
+	public function notes()
+    {
+      return $this->hasMany(Note::class);
     }
     
 }

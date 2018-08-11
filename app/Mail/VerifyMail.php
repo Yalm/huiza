@@ -29,7 +29,7 @@ class VerifyMail extends Mailable
      */
     public function build()
     {
-        return $this->view('emails.verifyCustomer')
+        return $this->view('emails.welcome')
                     ->from('soporte@comercialhuizaperu.com')
                     ->subject('Correo de confirmación');
     }

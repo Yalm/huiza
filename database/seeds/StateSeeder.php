@@ -17,11 +17,11 @@ class StateSeeder extends Seeder
         ]);
         
         State::create([
-            'name' => 'aprobado'
+            'name' => 'completado'
         ]);
 
         State::create([
-            'name' => 'falta de pago'
+            'name' => 'pendiente de pago'
         ]);
 
         State::create([
@@ -29,11 +29,7 @@ class StateSeeder extends Seeder
         ]);
 
         State::create([
-            'name' => 'creado'
-        ]);
-
-        State::create([
-            'name' => 'denegado'
+            'name' => 'fallido'
         ]);
     }
 }

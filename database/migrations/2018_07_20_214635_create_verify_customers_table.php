@@ -14,7 +14,10 @@ class CreateVerifyCustomersTable extends Migration
     public function up()
     {
         Schema::create('verify_customers', function (Blueprint $table) {
-            $table->integer('customer_id');
+
+            $table->integer('customer_id')->unsigned();
+            $table->foreign('customer_id')->references('id')->on('customers');
+
             $table->string('token');
             $table->timestamps();
         });

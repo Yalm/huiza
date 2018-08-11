@@ -10,6 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/success',function(){
+    return view('emails.user_forgot');
+});
 // Shop routes
 Route::get('/', 'Shop\ShopController@index');
 Route::get('/product/{product}', 'Shop\ShopController@show');
