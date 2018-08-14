@@ -48,6 +48,12 @@ class LoginController extends Controller
                     ->with('warning','Debes confirmar tu cuenta Le hemos enviado un código de activación,
                                     verifique su correo electrónico.');
         }
+        if (!$customer->actived) 
+        {
+            auth()->logout();
+            return back()
+                    ->with('warning','Lo sentimos, su cuenta a está suspendida.');
+        }
         return redirect()->intended($this->redirectPath());
     }
 

@@ -2,9 +2,27 @@
 @section('main')
 <div class="row">
     <div class="col-md-12">
-        <h2 class="p-b-40 cl5 text-uppercase">PEDIDO {{ $order->getIdFormat() }}</h2>    
+        <h2 class="p-b-40 cl5 text-uppercase">PEDIDO #{{ $order->id }}</h2>    
     </div>
-    <div class="col-md-5 cl5 my-3">
+
+    @if($note)
+    <div class="col-12">
+        <h5 class="my-3 cl5 "><b>Nota del administrador</b></h5>
+        <ul class="order_notes">
+            <li id="liNote{{ $note->id}}" class="system-note">
+                <div class="note_content">
+                    <p>{{ $note->text }}</p>
+                </div>
+                <p class="meta">
+                    <abbr class="exact-date">añadido el {{ $note->formatDate() }}</abbr>
+                    por {{ $note->user->name }} 
+                </p>
+            </li>
+        </ul>
+    </div>
+    @endif  
+    
+    <div class="col-md-5 cl5">
         <h5 class="my-3"><b>Cliente</b></h5>
         <div class="media">
             <div class="col-md-4 col-4">
@@ -15,12 +33,13 @@
                 {{ $order->customer->email }}<br>
                 {{ $order->customer->address }}
             </div>
-        </div>  
-        <h5 class="my-4"><b>Datos de facturación</b></h5>
-        <h6 class="my-3">Nombre: {{ $order->name }}</h6>
-        <h6 class="my-3">Apellidos: {{ $order->surnames }}</h6>
-        <h6 class="my-3">Telefono/Celuar: {{ $order->phone }}</h6>
-        <h6 class="my-3">Dirección: {{ $order->address }}</h6>                        
+        </div>
+        @if($order->name)  
+            <h5 class="my-4"><b>Datos de recojo</b></h5>
+            <h6 class="my-3">Nombre: {{ $order->name }}</h6>
+            <h6 class="my-3">Apellidos: {{ $order->surnames }}</h6>
+            <h6 class="my-3">Telefono/Celuar: {{ $order->phone }}</h6>
+        @endif
     </div> 
 
     <div class="col-md-7">

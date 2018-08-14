@@ -23,15 +23,22 @@ class OrderRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'name' => 'required|max:191|string',
-            'surnames' => 'required|max:191|string',
+        
+        $rules = [
+            'name' => 'nullable|max:191|string',
+            'surnames' => 'nullable|max:191|string',
+            'phone' => 'nullable|regex:/^([0-9\.\s\-\+\(\)]*)$/|max:20',
             'note_customer'  => 'nullable|max:500|string',
-            'document_id' => 'nullable|numeric',
-            'document_number' => 'nullable|numeric|digits_between:08,20',
-            'phone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/',
-            'email' => 'required|email|max:191',
             'voucher' => 'nullable|image',    
         ];
+
+        if (($this->request->get('other_person')) == true) 
+        {
+            $rules['name'] = 'required|max:191|string';
+            $rules['surnames'] = 'required|max:191|string';
+            $rules['phone'] = 'required|regex:/^([0-9\.\s\-\+\(\)]*)$/|max:20';            
+        }
+
+          return $rules;
     }
 }

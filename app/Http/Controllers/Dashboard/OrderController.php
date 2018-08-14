@@ -8,6 +8,7 @@ use App\Order;
 use App\State;
 use App\Product;
 use App\Http\Requests\OrderRequest;
+use App\Document;
 
 class OrderController extends Controller
 {
@@ -21,6 +22,8 @@ class OrderController extends Controller
     public function edit($id)
     {
         $order = Order::findOrFail($id);
+        $documents = Document::all();
+        
         
         if($order->voucher)
         {
@@ -31,15 +34,15 @@ class OrderController extends Controller
         
         return view('dashboard.order.edit',[
             'order' => $order,
-            'states' => $states
-            
+            'states' => $states,
+            'documents' => $documents,            
         ]);
     }
     public function show($id)
     {
         $order = Order::findOrFail($id);
         return view('dashboard.order.show',[
-            'order' => $order
+            'order' => $order,
         ]);
     }
     public function update(OrderRequest $request,$id)
@@ -51,9 +54,8 @@ class OrderController extends Controller
         $order->name = $request->name;
         $order->surnames = $request->surnames;
         $order->phone = $request->phone;
-        $order->email = $request->email;
-        $order->address = $request->address;
-
+        $order->note_customer = $request->note_customer;
+        
         if($order->state_id != 2)
         {
             if($request->states == 2)

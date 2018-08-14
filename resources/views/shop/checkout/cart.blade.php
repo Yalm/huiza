@@ -1,4 +1,4 @@
-<div class="col-md-5 p-tb-20">
+<div class="col-md-6 p-tb-20">
     <div class="table-responsive checkout-review-order">
         <table class="table_ch cl5">
             <thead>
@@ -53,9 +53,9 @@
             He leído y estoy de acuerdo con los <a href="#" class="hover_ch">términos y condiciones</a> de la web
             </label>
         </div>
-        <button type="submit" 
+        <button type="submit" {{ $customer->verifiedData() ? '' : 'disabled' }}
             class="flex-c-m stext-101 cl0 size-121 bg3 bor1 
-            hov-btn3 p-lr-15 trans-04 pointer">
+            hov-btn3 p-lr-15 trans-04 pointer btn_ch">
             REALIZAR PEDIDO
         </button>
     </div>   

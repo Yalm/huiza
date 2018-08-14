@@ -34,7 +34,6 @@ class CustomerRequest extends FormRequest
             {
                 return [
                     'phone' => 'nullable|numeric|digits_between:09,15',
-                    'address' => 'max:191',
                     'name' => 'max:191|required',
                     'surnames' => 'max:191|required',
                     'avatar' => 'image',
@@ -47,9 +46,8 @@ class CustomerRequest extends FormRequest
             {
                 return [
                 'phone' => 'nullable|regex:/^([0-9\.\s\-\+\(\)]*)$/|max:20',
-                'address' => 'max:191',
                 'name' => 'max:191|required',
-                'surnames' => 'max:191|required',
+                'surnames' => 'max:191|nullable',
                 'document_id' => 'nullable|numeric',
                 'document_number' => 'nullable|numeric|digits_between:08,20',
                 'email' => 'required|email|max:191|unique:customers,email,'.$this->get('id'),

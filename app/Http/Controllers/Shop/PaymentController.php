@@ -22,7 +22,6 @@ class PaymentController extends Controller
         $total = Cart::subtotal();
         $customer = Customer::findOrFail(Auth::user()->id);
         $documents = Document::all();
-
         return view('shop.checkout.index',[
             'customer' => $customer,
             'cart' => $cart,
@@ -49,9 +48,6 @@ class PaymentController extends Controller
             'customer_id' => Auth::user()->id,
             'name' => $request->name,
             'surnames' => $request->surnames,
-            'email' =>$request->email,
-            'document_id' => $request->document_id,
-            'document_number' => $request->document_number,
             'phone' => $request->phone,
             'note_customer' => $request->note_customer,
             'state_id' => '3',
@@ -62,6 +58,8 @@ class PaymentController extends Controller
         {
             $meOrder->products()->attach($product->id,['quantity' => $product->qty]);
         }
+        
+        $meOrder->sendOrderNotification($meOrder);
 
         Cart::destroy();        
         

@@ -1,36 +1,6 @@
 @extends('shop.profile.layout')
 @section('main')
-<form class="form-row p-tb-20" method="POST" action="{{ route('changeDataCustomer') }}">
-@csrf
-    @if (session('successCustomer'))
-        <div class="alert alert-success col-md-12">
-            {{ session('successCustomer') }}
-        </div>
-    @endif
-    <input type="hidden" name="id" value="{{ $customer->id }}">
-    <div class="form-group col-md-6">
-        <label class="cl5 stext-101" for="inputEmail4">NOMBRE</label>
-        <input type="text" class="form-control" required name="name"
-                id="inputEmail4" placeholder="NOMBRE" 
-                value="{{ $customer->name }}">
-    </div>
-    <div class="form-group col-md-6">
-        <label class="cl5 stext-101" for="inputPassword4">APELLIDOS</label>
-        <input  type="text" class="form-control" name="surnames" value="{{ $customer->surnames }}"
-                id="inputPassword4" placeholder="APELLIDOS">
-    </div>
-    <div class="form-group col-md-12 p-b-10">
-        <label class="cl5 stext-101" for="inputAddress">CORREO ELECTRÓNICO</label>
-        <input type="text" class="form-control" required 
-                readonly id="inputAddress" placeholder="example@gmail.com" 
-                value="{{ $customer->email}}">
-    </div>
-    <button type="submit" 
-            class="col-md-3 flex-c-m stext-101 cl0 size-121 bg3 bor1 
-            hov-btn3 p-lr-15 trans-04 pointer">
-            Actualizar datos
-    </button>
-</form>
+ @include('shop.checkout.account')
 <form class="form-row p-t-40" method="POST" action="{{ route('changePassword') }}">
 @csrf
     <div class="col-md-12">

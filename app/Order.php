@@ -4,9 +4,15 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Crypt;
+use App\Notifications\OrderNotification;
+use Illuminate\Notifications\Notifiable;
+
+use Jenssegers\Date\Date;
 
 class Order extends Model
 {
+	use Notifiable;
+
     protected $guarded =[];
 
     public function customer()
@@ -23,12 +29,12 @@ class Order extends Model
     public function getIdFormat()
     {
 		$parameter =[
-            'id' =>1,
+            'id' => $this->attributes['id'],
         ];
-	$parameter= Crypt::encrypt($parameter);
+		$parameter= Crypt::encrypt($parameter);
 	
-      $id = md5($this->attributes['id'] . $this->attributes['created_at'] );
-      return $id;
+      	//$id = md5($this->attributes['id'] . $this->attributes['created_at'] );
+      return $parameter;
     }
     
     public function getTotalPrice() 
@@ -69,6 +75,16 @@ class Order extends Model
 	public function notes()
     {
       return $this->hasMany(Note::class);
+	}
+	
+	public function sendOrderNotification($order)
+    {
+        $this->notify(new OrderNotification($order));
     }
-    
+	
+	
+	public function getCreatedAtAttribute($date)
+	{
+		return new Date($date);
+	}
 }

@@ -8,6 +8,7 @@ use App\Order;
 use Image;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use App\Http\Requests\OrderRequest;
+use Illuminate\Support\Facades\Crypt;
 
 class OrderController extends Controller
 {
@@ -23,14 +24,17 @@ class OrderController extends Controller
 
     public function showUpload($id)
     {
-        $order = Order::find($id);
+        $data = Crypt::decrypt($id);
+        $order = Order::findOrFail($data['id']);
+
         return view('shop.profile.orders.upload',[
             'order' => $order
         ]);
     }
     public function canceled($id)
     {
-        $order = Order::findOrfail($id);
+        $data = Crypt::decrypt($id);
+        $order = Order::findOrFail($data['id']);
         $order->state_id = '1';
         $order->save();
 
@@ -61,10 +65,14 @@ class OrderController extends Controller
     }
     
     public function show($id)
-    {
-        $order = Order::find($id);
+    {   
+        $data = Crypt::decrypt($id);
+        $order = Order::findOrFail($data['id']); 
+        $note = $order->notes()->latest()->take(1)->first();
+        
         return view('shop.profile.orders.show',[
             'order' => $order,
+            'note' => $note
         ]);
     }
 }

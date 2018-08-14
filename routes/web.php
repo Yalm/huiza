@@ -11,7 +11,7 @@
 |
 */
 Route::get('/success',function(){
-    return view('emails.user_forgot');
+    return view('dashboard.report.top_product');
 });
 // Shop routes
 Route::get('/', 'Shop\ShopController@index');
@@ -35,7 +35,7 @@ Route::group(['middleware' => 'auth:web'], function ()
         Route::get('/','Shop\CustomerController@profile');
         Route::get('/account','Shop\CustomerController@account');
         Route::post('/changePassword','Shop\CustomerController@changePassword')->name('changePassword');
-        Route::post('/changeDataCustomer','Shop\CustomerController@changeDataCustomer')->name('changeDataCustomer');
+        Route::put('/changeDataCustomer','Shop\CustomerController@changeDataCustomer')->name('changeDataCustomer');
        // Orders Routes
         Route::get('/orders','Shop\OrderController@index');
         Route::get('order/{order}/upload','Shop\OrderController@showUpload');
@@ -84,5 +84,12 @@ Route::prefix('admin')->group(function ()
         Route::resource('/user','Dashboard\UserController');
         Route::get('/changePassword','Dashboard\UserController@ShowchangePassword');
         Route::post('/changePassword','Dashboard\UserController@changePassword')->name('UserChangePassword');
+        Route::resource('/note', 'Dashboard\NoteController');
+
+        // REPORTS
+        Route::get('report','Dashboard\ReportController@index');
+        Route::post('report/topProduct','Dashboard\ReportController@topProduct');
     });
 });
+
+

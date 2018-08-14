@@ -9,6 +9,11 @@
                     <div class='login_title'>
                         <span>Ingrese a su cuenta</span>
                     </div>
+                    @if (session('error'))
+                        <div class="alert alert-danger">
+                            {{ session('error') }}
+                        </div>
+				    @endif
                     <div class='login_fields'>
                         <div class='login_fields__user'>
                             <div class='icon f-s-20'>

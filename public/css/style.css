@@ -6978,6 +6978,11 @@ tbody tr td:last-child {
 {
   color: #BED001 !important;
 }
+.hov_a_ch:visited
+{
+  color: rgb(185, 181, 181) !important;
+}
+
 .card_ch .table
 {
   margin-top: 5px;
@@ -7124,5 +7129,63 @@ body .login_fields__submit input:hover {
 .state_blue
 {
   color: blue !important;
+}
+
+/*  LIST NOTES */
+
+ul.order_notes 
+{
+  padding: 2px 0 0;
+}
+ul.order_notes li 
+{
+  padding: 0 10px;
+}
+  ul.order_notes li.system-note .note_content
+ {
+  background: #BED001;
+  padding: 1px 10px 1px 10px;
+  position: relative;
+  
+}
+
+ul.order_notes li .note_content::after {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 20px;
+  width: 0;
+  height: 0;
+  border-width: 10px 10px 0 0;
+  border-style: solid;
+  border-color: #BED001 transparent;
+}
+
+ul.order_notes li.system-note p 
+{
+  font-size: 13px;
+  line-height: 1.5;
+  margin: 1em 0;
+  color: white;
+}
+ul.order_notes li p.meta .exact-date 
+{
+  border-bottom: 1px dotted #999;
+}
+
+ul.order_notes li p.meta .exact-date:hover
+{
+cursor: auto;
+}
+ul.order_notes li p.meta 
+{
+  padding: 10px;
+  color: #999;
+  margin: 0;
+  font-size: 11px;
+}
+ul.order_notes li a.delete_note 
+{
+  color: #a00;
 }
 

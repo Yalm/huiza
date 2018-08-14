@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Shop;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CustomerRequest;
 use App\Customer;
+use App\Document;
 use Auth;
 use Hash;
 
@@ -20,8 +22,10 @@ class CustomerController extends Controller
     public function account()
     {
         $customer = Auth('web')->user();
+        $documents = Document::all();
         return view('shop.profile.account',[
-            'customer' => $customer
+            'customer' => $customer,
+            'documents' => $documents
         ]);
     }
 
@@ -34,11 +38,14 @@ class CustomerController extends Controller
 
     }
 
-    public function changeDataCustomer(Request $request)
+    public function changeDataCustomer(CustomerRequest $request)
     {
-        $customer = Customer::findOrFail($request->id);
+        $customer = Customer::findOrFail(Auth('web')->user()->id);
         $customer->name = $request->name;
         $customer->surnames = $request->surnames;
+        $customer->document_id = $request->document_id;
+        $customer->document_number = $request->document_number;
+        $customer->phone = $request->phone;
         $customer->save();
 
         return redirect()->back()->with("successCustomer","Información cambiada con éxito!");

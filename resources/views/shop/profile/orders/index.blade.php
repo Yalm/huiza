@@ -10,7 +10,7 @@
     <h2 class="col-md-9 stext-101 p-t-10">No se ha hecho ningún pedido todavía.</h2>
     @else
     @if (session('success'))
-        <div class="alert alert-success">
+        <div class="alert alert-success col-12">
             {{ session('success') }}
         </div>
     @endif
@@ -28,23 +28,23 @@
             <tbody>
                 @foreach($orders as $order)
                 <tr class="text-center">
-                    <th scope="row" class="text-uppercase text-truncate" style="max-width: 280px;">{{ $order->getIdFormat() }}</th>
+                    <th scope="row" class="text-uppercase text-truncate" style="max-width: 280px;">#{{ $order->id }}</th>
                     <td>{{ $order->created_at->format('F d \,\ Y ')  }}</td>
                     <td class="text_comer_h {{ $order->getColorState() }}">{{ $order->state->name }}</td>
                     <td>S/.{{ $order->getTotalPrice() }}</td>
                     <td>
                     @if($order->state->id == 1 || $order->state->id == 5 || $order->state->id == 2)
-                        <a href="{{ url("profile/order/$order->id") }}" class="fs-20 hov-cl1 cl5 p-r-5"> 
+                        <a href="{{ url('profile/order',$order->getIdFormat() ) }}" class="fs-20 hov-cl1 cl5 p-r-5"> 
                             <i class="zmdi zmdi-eye"></i>
                         </a>
                     @elseif($order->state->id == 3 || $order->state->id == 4)
-                        <a href="{{ url("profile/order/$order->id/canceled") }}" class="fs-20 hov-cl1 cl5 p-r-5"> 
+                        <a href="{{ url('profile/order/'.$order->getIdFormat() .'/canceled' ) }}" class="fs-20 hov-cl1 cl5 p-r-5"> 
                             <i class="zmdi zmdi-close"></i>
                         </a>
-                        <a href="{{ url("profile/order/$order->id") }}" class="fs-20 hov-cl1 cl5 p-r-5"> 
+                        <a href="{{ url('profile/order',$order->getIdFormat() ) }}" class="fs-20 hov-cl1 cl5 p-r-5"> 
                             <i class="zmdi zmdi-eye"></i>
                         </a>
-                        <a href="{{ url("profile/order/$order->id/upload ") }}" class="fs-20 hov-cl1 cl5">
+                        <a href="{{ url('profile/order/'.$order->getIdFormat() .'/upload' ) }}" class="fs-20 hov-cl1 cl5">
                             <i class="zmdi zmdi-upload"></i>
                         </a> 
                     @endif                        
@@ -55,14 +55,13 @@
         </table>
     </div>
     @endif
-    			<div class="flex-c-m flex-w w-full p-t-45">
-				@if(count($orders))
-					<div class="mt-2 mx-auto">
-							{{ $orders->links('
-								pagination::bootstrap-4') }}
-					</div>
-					@endif
-			</div>
+    <div class="flex-c-m flex-w w-full p-t-45">
+        @if(count($orders))
+            <div class="mt-2 mx-auto">
+                {{ $orders->links('pagination::bootstrap-4') }}
+            </div>
+        @endif
+	</div>
 </div>
 @endsection
 @section('myjsfile')

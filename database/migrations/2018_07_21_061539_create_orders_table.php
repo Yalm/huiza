@@ -19,16 +19,12 @@ class CreateOrdersTable extends Migration
             $table->integer('customer_id')->unsigned();
             $table->foreign('customer_id')->references('id')->on('customers');
 
-            $table->string('name');
-            $table->string('surnames');
-            $table->string('email');
-            $table->string('phone');                                    
+            $table->string('name')->nullable();
+            $table->string('surnames')->nullable();
+            $table->string('phone')->nullable();        
+                                        
             $table->string('note_customer',500)->nullable();
             $table->string('voucher')->nullable();
-
-            $table->integer('document_id')->unsigned();
-            $table->foreign('document_id')->references('id')->on('documents');
-            $table->string('document_number',20)->nullable();
 
             $table->integer('state_id')->unsigned();
             $table->foreign('state_id')->references('id')->on('states');

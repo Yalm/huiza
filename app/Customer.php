@@ -49,4 +49,15 @@ class Customer extends Authenticatable
     {
         $this->notify(new CustomerResetPasswordNotification($token));
     }
+
+    public function verifiedData()
+    {
+        if($this->attributes['surnames'] === null ||
+        $this->attributes['phone'] === null ||
+        $this->attributes['document_number'] === null)
+        {
+            return false;
+        }
+        return true;
+    }
 }

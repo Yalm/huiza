@@ -16,9 +16,9 @@
                 
                     <ul class="row order_details">
                         <li class="col-md-4 col-sm-6" ><b>Número de pedido:</b>
-                        <small class="text-uppercase">{{ $order->getIdFormat() }}</small></li>
+                        <small class="text-uppercase">#{{ $order->id }}</small></li>
                         <li class="col-md-2 col-sm-6"><b>Fecha:</b><br>{{ $order->created_at->format('F d \,\ Y ')  }}</li>
-                        <li class="col-md-4 col-sm-6"><b>Email:</b><br>{{ $order->email }}</li> 
+                        <li class="col-md-4 col-sm-6"><b>Email:</b><br>{{ $order->customer->email }}</li> 
                         <li class="col-md-2 col-sm-6"><b>Total:</b><br>S/.{{ $order->getTotalPrice() }}</li>
                     </ul>
                     <h2 class="wc-bacs-bank-details-heading">Nuestros detalles bancarios</h2>

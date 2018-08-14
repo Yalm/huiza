@@ -39,7 +39,7 @@
 									<tr>
                                         <td class="hidden">{{ $order->created_at }}</td>
                                         <td>{{ $order->customer->name }}</td>
-										<td class="text-uppercase">{{ $order->getIdFormat() }}</td>
+										<td class="text-uppercase">#{{ $order->id }}</td>
 										<td>S/.{{ $order->getTotalPrice() }}</td>
 										<td class="text-uppercase {{ $order->getColorState() }}">{{ $order->state->name }}</td>                                                                                
 										<td class="form-inline">

@@ -86,16 +86,6 @@
 							@endif
 						</div>
                         
-                        <div class="form-group col-md-12">
-							<label class="control-label">Dirección</label>
-							<input class="form-control {{ $errors->has('address') ? 'is-invalid' : '' }}" type="text" name="address" value="{{ old('address', $customer->address) }}">
-							@if ($errors->has('address'))
-								<span class="form-control-feedback text-danger">
-									<strong>{{ $errors->first('address') }}</strong>
-								</span>
-							@endif
-						</div>
-
                     </div>
                 </div>
             </div>
@@ -134,7 +124,7 @@
                                 <tr>
                                     <td class="text-uppercase">
                                         <a class="hov_a_ch" href="{{ url("admin/order/$order->id/edit") }}">
-                                            {{ $order->getIdFormat() }}
+                                            {{ $order->id }}
                                         </a>
                                     </td>
                                     <td>S/.{{ $order->getTotalPrice() }}</td>
