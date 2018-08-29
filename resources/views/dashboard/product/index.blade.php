@@ -72,8 +72,7 @@
 	<script src="{{ asset('js/lib/datatables/datatables.min.js') }}"></script>
 	<script src="{{ asset('js/lib/datatables/datatables-init.js') }}"></script>
     <script>
-    $(document).ready(function(){
-        $('#deleteProduct').click(function(event) 
+        $(doucument).on('click','#deleteProduct', function() 
         {
             var urlSend = $(this).data('url');
             swal({
@@ -98,9 +97,8 @@
                     {
                         swal("Cancelado !!", "Oye, tu producto esta seguro !!", "error");
                     }
-                });
+            });
         });
-    });
     </script>
 @endsection
 

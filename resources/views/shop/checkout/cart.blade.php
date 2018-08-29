@@ -45,6 +45,15 @@
                 hasta que el importe haya sido recibido en nuestra cuenta.</p>
             <hr>
         </div>
+        <div class="form-check">
+            <label class="custom-control custom-radio">
+                <input id="radioStacked2" name="credit_card" type="radio"  class="custom-control-input">
+                <span class="custom-control-indicator" style="background-color: #212529;"></span>
+                <span class="custom-control-description cl5 font-weight-bold">Pago con tarjeta</span>
+            </label>
+            <p class="p-l-25">Realiza tu pago con visa o mastercard.</p>
+            <hr>
+        </div>
         
         <div class="custom-control custom-checkbox font-weight-bold cl5 p-b-10">
             <input type="checkbox" class="custom-control-input" required id="customControlAutosizing">
@@ -53,7 +62,7 @@
             He leído y estoy de acuerdo con los <a href="#" class="hover_ch">términos y condiciones</a> de la web
             </label>
         </div>
-        <button type="submit" {{ $customer->verifiedData() ? '' : 'disabled' }}
+        <button type="submit" id="payment_sucess" {{ $customer->verifiedData() ? '' : 'disabled' }}
             class="flex-c-m stext-101 cl0 size-121 bg3 bor1 
             hov-btn3 p-lr-15 trans-04 pointer btn_ch">
             REALIZAR PEDIDO
