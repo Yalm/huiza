@@ -25,7 +25,7 @@
                         <span><i class="fa fa-usd f-s-40 color-primary"></i></span>
                     </div>
                     <div class="media-body media-text-right">
-                        <h2>S/.568120</h2>
+                        <h2>S/ {{ $total }}</h2>
                         <p class="m-b-0 text-white">Los ingresos totales</p>
                     </div>
                 </div>

@@ -47,7 +47,7 @@ class UserResetPasswordNotification extends Notification
                     ->action('Restablecer la contraseña', route('user.password.reset', $this->token))
                     ->line('Si no solicitó restablecer la contraseña, no se requieren más acciones.');    */             
     
-        return (new MailMessage)->view(
+        return (new MailMessage)->subject('Restablecer la contraseña')->view(
             'emails.user_forgot', ['token' => route('user.password.reset', $this->token)]
         );
     }

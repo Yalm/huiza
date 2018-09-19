@@ -63,6 +63,11 @@ class ShopController extends Controller
     {   
         return view('shop.contact');
     }
+    
+    public function terms() 
+    {   
+        return view('shop.terms_and_conditions');
+    }
 
     public function sendContact(Request $request)
     {
@@ -73,7 +78,7 @@ class ShopController extends Controller
         ], function($message) use($request)
         {
             $message->from($request->email);
-            $message->to('prueba@comercialhuizaperu.com', 'Admin')->subject('Mensaje de Contáctanos');
+            $message->to('i2917724@continental.edu.pe', 'Admin')->subject('Mensaje de Contáctanos');
         });
         return back()->with('success', '¡Gracias por contactarnos!');
     
@@ -103,9 +108,11 @@ class ShopController extends Controller
         {
             $products->image = url($products->image);
         });
+        $categories = Category::all();
 
         return view('shop.shop',[
             'products' => $products,
+            'categories' => $categories
         ]);
     }
 

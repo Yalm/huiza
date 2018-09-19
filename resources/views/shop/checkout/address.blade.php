@@ -2,13 +2,11 @@
     <div class="col-md-12">
         <h2 class="cl5 font-weight-bold p-b-30">DETALLES DEl PEDIDO</h2> 
     </div>
-    <div class="custom-control custom-checkbox font-weight-bold cl5 p-b-10 fs-18 text-uppercase">
+    <label class="custom-control custom-checkbox font-weight-bold cl5 p-b-10 fs-18 text-uppercase" for="addCustomer">
             <input type="checkbox" {{ $errors->any() ? 'checked' : '' }} class="custom-control-input" name="other_person" id="addCustomer">
             <span class="custom-control-indicator"></span>
-            <label class="custom-control-label" for="addCustomer">
                 Quiero que otra persona lo recoja por mi
-            </label>
-    </div>
+    </label>
 
     <div class="collapse col-md-12 {{ $errors->any() ? 'show' : '' }}" id="collapseExample">
         <h5 class="cl5 my-3">Datos de la persona</h5> 

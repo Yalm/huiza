@@ -68,9 +68,9 @@ class Customer extends Authenticatable implements JWTSubject
 
     public function verifiedData()
     {
-        if($this->attributes['surnames'] === null ||
-        $this->attributes['phone'] === null ||
-        $this->attributes['document_number'] === null)
+        if($this->attributes['surnames'] == null ||
+        $this->attributes['phone'] == null ||
+        $this->attributes['document_number'] == null)
         {
             return false;
         }

@@ -30,10 +30,21 @@ class DashboardController extends Controller
         $product_count = Product::all()->count();
         $order_count = Order::all()->count();
         $customer_count = Customer::all()->count();
+        $orderTotal = Order::all()->where('state_id','2');
+
+        $orderTotal->each(function($orderTotal)
+        {
+            $orderTotal->total = $orderTotal->getTotalPrice();
+
+        });
+
+        $total = $orderTotal->sum('total');
+
         return view('dashboard.index',[
             'product_count' => $product_count,
             'order_count' => $order_count,
-            'customer_count' => $customer_count
+            'customer_count' => $customer_count,
+            'total' => $total
         ]);
     }
 }

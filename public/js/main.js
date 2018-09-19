@@ -237,6 +237,18 @@
           } else {
             var newVal = numProduct + 1;
           }
+        
+        if(numProduct == max)
+        {
+            swal({
+                type: 'error',
+                title: 'Error',
+                text: 'Cantidad maxima',
+                confirmButtonClass: 'flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer',
+                confirmButtonText: '&nbsp; OK &nbsp;',
+                buttonsStyling: false,
+            });
+        }
 
         $(this).prev().val(newVal);
     });

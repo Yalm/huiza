@@ -236,7 +236,7 @@
 			text-align: left;
 		}
 		section table tbody.body .total {
-			color: #2A8EAC;
+			color: #BED001;
 			font-weight: 600;
 		}
 		section table tbody.body tr.total td {
@@ -252,7 +252,7 @@
 		section table tbody.body tr.total .total {
 			font-size: 1.18181818181818em;
 			font-weight: 600;
-			color: #2A8EAC;
+			color: #BED001;
 		}
 		section table.grand-total {
 			margin-top: 40px;
@@ -263,7 +263,7 @@
 		}
 		section table.grand-total tbody td {
 			padding: 0 10px 10px;
-			background-color: #2A8EAC;
+			background-color: #BED001;
 			color: #ffffff;
 			font-weight: 400;
 			text-align: right;
@@ -283,7 +283,7 @@
 		section table.grand-total tbody td.grand-total div {
 			float: right;
 			padding: 10px 5px;
-			background-color: #21BCEA;
+			background-color: #BED001;
 		}
 		section table.grand-total tbody td.grand-total div span {
 			margin-right: 5px;
@@ -298,7 +298,7 @@
 		}
 		footer .thanks {
 			margin-bottom: 40px;
-			color: #2A8EAC;
+			color: #BED001;
 			font-size: 1.16666666666667em;
 			font-weight: 600;
 		}
@@ -307,7 +307,7 @@
 		}
 		footer .end {
 			padding-top: 5px;
-			border-top: 2px solid #2A8EAC;
+			border-top: 2px solid #BED001;
 			text-align: center;
 		}
 

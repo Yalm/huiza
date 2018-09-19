@@ -40,7 +40,7 @@ class OrderNotification extends Notification
      */
     public function toMail($notifiable)
     {
-        return (new MailMessage)->view(
+        return (new MailMessage)->from($this->order->customer->email)->subject('Detalles de pedido')->view(
             'emails.order', ['order' => $this->order]
         );
     }

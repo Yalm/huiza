@@ -10,9 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/success',function(){
-    return view('dashboard.report.top_product');
-});
+
+
+
 // Shop routes
 Route::get('/', 'Shop\ShopController@index');
 Route::get('/product/{product}', 'Shop\ShopController@show');
@@ -22,6 +22,7 @@ Route::get('/contact', 'Shop\ShopController@contact');
 Route::post('/contact', 'Shop\ShopController@sendContact');
 Route::get('/shop/product','Shop\ShopController@search');
 Route::get('/shop/{name}','Shop\ShopController@searchCategory');
+Route::get('/terms_and_conditions','Shop\ShopController@terms');
 
 // Shopping Cart Routes
 Route::resource('/cart','Shop\ShoppingCartController');
@@ -50,13 +51,16 @@ Route::group(['middleware' => 'auth:web'], function ()
         Route::get('/checkout', 'Shop\PaymentController@checkout');
         Route::post('/checkout', 'Shop\PaymentController@sucess');
     });
+    Route::get('complete_account','Shop\PaymentController@completeAccount');
+    Route::put('complete_account','Shop\PaymentController@accountUpdate');            
+                
+    
 });
 
 Auth::routes();
 Route::get('/customer/verify/{token}', 'Auth\RegisterController@verifyCustomer');
 Route::get('/resend','Auth\ResendEmailController@resend');
 Route::post('/resend','Auth\ResendEmailController@resendEmail')->name('resend');
-
 //Route::get('/home', 'Ecommerce\HomeController@index')->name('home');
 
 
@@ -89,6 +93,10 @@ Route::prefix('admin')->group(function ()
         // REPORTS
         Route::get('report','Dashboard\ReportController@index');
         Route::post('report/topProduct','Dashboard\ReportController@topProduct');
+        Route::post('report/topCustomer','Dashboard\ReportController@topCustomer');
+        Route::post('report/purchases','Dashboard\ReportController@purchases');
+        
+        
     });
 });
 

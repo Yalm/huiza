@@ -8,6 +8,8 @@ use App\Notifications\OrderNotification;
 use Illuminate\Notifications\Notifiable;
 
 use Jenssegers\Date\Date;
+use DB;
+use  Illuminate\Support\Collection as Collection;
 
 class Order extends Model
 {
@@ -86,5 +88,37 @@ class Order extends Model
 	public function getCreatedAtAttribute($date)
 	{
 		return new Date($date);
+	}
+
+	public static function topCustomer($f1,$f2)
+	{
+		return DB::table('orders')
+		->join('customers', 'customers.id', '=', 'orders.customer_id')
+		->select('customers.name','customers.surnames','customers.email',DB::raw('count(customer_id) as purchases'))
+		->where('state_id','=','2')
+		->whereBetween('orders.created_at', [$f1,  $f2])		
+		->groupBy('customer_id','customers.name','customers.surnames','customers.email')
+		->orderBy(DB::raw('count(customer_id)'), 'desc')
+		->take(9)		
+		->get();
+	}
+
+	public static function purchases($f1,$f2)
+	{
+		$orders =  DB::table('orders')
+		->join('customers', 'customers.id', '=', 'orders.customer_id')
+		->select('orders.id')
+		->where('state_id','=','2')
+		->whereBetween('orders.created_at', [$f1,  $f2])		
+		->get();
+
+		$popular= [];
+		foreach($orders as $order)
+		{
+			array_push($popular,Order::find($order->id));
+		}
+		$collection = Collection::make($popular);
+
+		return $collection;
 	}
 }

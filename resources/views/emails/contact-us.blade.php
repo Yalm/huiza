@@ -264,25 +264,8 @@
                             <td style="padding: 20px; font-family: sans-serif; font-size: 15px; line-height: 20px; color: #555555;">
                                 <h1 style="margin: 0 0 10px; font-size: 25px; line-height: 30px; color: #333333; font-weight: normal;">Envío de mensaje de contáctanos.</h1>
                                 <p style="margin: 0 0 10px;">{{ $user_message  }}</p>
-                                <ul style="padding: 0; margin: 0; list-style-type: disc;">
-									<li style="margin:0 0 10px 20px;" class="list-item-first"><b>Email:</b> &nbsp; {{ $email }}</li>
-								</ul>
                             </td>
                         </tr>
-                        <tr>
-                            <td style="padding: 0 20px 20px;">
-                                <!-- Button : BEGIN -->
-                                <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" style="margin: auto;">
-                                    <tr>
-                                        <td class="button-td button-td-primary" style="border-radius: 4px; background: #000;">
-											<a class="button-a button-a-primary" href="https://google.com/" style="background: #000; border: 1px solid #d5d5d5; font-family: sans-serif; font-size: 15px; line-height: 15px; text-decoration: none; padding: 13px 17px; color: #fff; display: block; border-radius: 2px;">Centered Primary Button</a>
-										</td>
-                                    </tr>
-                                </table>
-                                <!-- Button : END -->
-                            </td>
-                        </tr>
-
                     </table>
                 </td>
             </tr>

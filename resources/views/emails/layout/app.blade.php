@@ -119,19 +119,23 @@
         <table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#000">
             @include('emails.layout.pre_header')
             <!-- === BODY SECTION=== --> 
-            <tr>
-                <td align="center" valign="top"  bgcolor="#000">
-                    <table width="600" cellpadding="0" cellspacing="0" border="0" align="center" class="em_main_table" style="table-layout:fixed;">
-                        @include('emails.layout.logo')
-                        @include('emails.layout.nav')
-                        <!-- === IMG WITH TEXT AND COUPEN CODE SECTION === -->
-                        <tr>
-                            @yield('content')
-                        </tr>
-                        <!-- === //IMG WITH TEXT AND COUPEN CODE SECTION === -->
-                    </table>
-                </td>
-            </tr>
+            <table align="center" bgcolor="#000" width="100%">
+                <tbody>
+                    <tr>
+                        <td align="center" valign="top"  bgcolor="#000">
+                            <table width="100%" cellpadding="0" cellspacing="0" border="0" align="center" class="em_main_table" style="table-layout:fixed;">
+                                @include('emails.layout.logo')
+                                @include('emails.layout.nav')
+                                <!-- === IMG WITH TEXT AND COUPEN CODE SECTION === -->
+                                <tr>
+                                    @yield('content')
+                                </tr>
+                                <!-- === //IMG WITH TEXT AND COUPEN CODE SECTION === -->
+                            </table>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
             <!-- === //BODY SECTION=== -->
             @include('emails.layout.footer')
         </table>

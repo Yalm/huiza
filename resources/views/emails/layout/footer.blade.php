@@ -1,7 +1,7 @@
 <!-- === FOOTER SECTION === -->
 <tr>
     <td align="center" valign="top"  bgcolor="#1C1C1C" class="em_aside">
-        <table width="600" cellpadding="0" cellspacing="0" border="0" align="center" class="em_main_table" style="table-layout:fixed;">
+        <table width="100%" cellpadding="0" cellspacing="0" border="0" align="center" class="em_main_table" style="table-layout:fixed;">
             <tr>
                 <td height="10" style="font-size:1px; line-height:1px;">&nbsp;</td>
             </tr>

@@ -65,11 +65,14 @@ class ShoppingCartController extends Controller
 	
     public function editCart(Request $request)
     {
-		foreach($request->rowId as $index => $id) 
-		{
-			$qty = isset($request->qty[$index]) ? $request->qty[$index] : null;
-			Cart::update($id, $qty);      
-		}
-		return back();
-    }
+
+		Cart::update($request->id, $request->qty); 
+		$total = Cart::subtotal();     
+		return response()->json($total);
+	}
+	
+	public function updated($id)
+    {
+		Cart::update($id, $qty);
+	}
 }

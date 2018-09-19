@@ -15,29 +15,28 @@
 <div class="container-fluid p-t-50 p-b-85  {{ $count_cart ? '' : 'hidden' }} cart-form">
 	<div class="row">
 		<div class="col-xl-8">
-			<form class="wrap-table-shopping-cart" id="#padreTable" action="{{ url('/cartEdit') }}"  method="post">
+			<div class="wrap-table-shopping-cart" id="#padreTable">
 					<table class="table-shopping-cart">
 						@csrf				
 						@foreach ($products as $product)
-						<tr class="table_row" id="trProductCart{{ $product->rowId }}">
+						<tr class="table_row" id="trProductCart{{ $product->rowId }}">						
 							<td class="column-1">
 								<div class="how-itemcart1" data-id="{{$product->rowId}}" id="DeleteProductCart" >
 									<img src="{{ asset($product->options->img)  }}" alt="IMG">
 								</div>
 							</td>
-							<input type="hidden" name="rowId[]" value="{{$product->rowId}}">
-							<td class="column-2 text_comer_h">{{  $product->name }}</td>
+							<td class="column-2 text_comer_h"><a class="cl5 hov-cl1 " href="{{ url("product/$product->id") }}">{{  $product->name }}</a></td>
 							<td class="column-3">S/.{{ $product->price }}</td>
 							<td class="column-4">
 								<div class="wrap-num-product flex-w m-l-auto m-r-0">
-									<div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
-									<i class="fs-16 zmdi zmdi-minus"></i>
+									<div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m" data-id="{{ $product->rowId }}">
+										<i class="fs-16 zmdi zmdi-minus"></i>
 									</div>
 
-									<input class="mtext-104 cl3 txt-center num-product" type="number" name="qty[]" min="1" max="{{$product->options->stock}}" readonly value="{{ $product->qty }}">
+									<input class="mtext-104 cl3 txt-center num-product"  type="number" min="1" max="{{$product->options->stock}}" readonly value="{{ $product->qty }}">
 
-									<div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
-									<i class="fs-16 zmdi zmdi-plus"></i>
+									<div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m" data-id="{{ $product->rowId }}">
+										<i class="fs-16 zmdi zmdi-plus"></i>
 									</div>
 								</div>
 							</td>
@@ -45,17 +44,13 @@
 						</tr>
 						@endforeach		
 					</table>
-				<div class="flex-w flex-sb-m p-b-15 p-lr-40 p-lr-15-sm">
-					<input name="_method" type="hidden" value="PUT">
-					<button type="submit" class="text-dark flex-c-m stext-101 cl2   p-lr-15 trans-04 pointer m-tb-10">
-						Actualizar carrito
-					</button>
-				</div>
-			</form> 
+			</div> 
 		</div>
 		
 		<div class="col-xl-4 p-tb-20">
+
 			<div class="checkout-review-order">
+				<div id="loader" class=""></div>
 				<table class="table_ch cl5">
 					<tfoot>
 						<tr class="title">
@@ -122,6 +117,91 @@
 		{
 			console.log(data);
 		},
+		});
+  	});
+	
+	$(document).on('click','.btn-num-product-up',function() 
+	{
+		var id = $(this).data('id');
+		var numProduct = Number($(this).prev().val());
+		var max = Number($(this).prev().attr('max'));
+		var button = $(this);
+
+		if(numProduct <= max)
+		{
+			console.log(true);			
+			$.ajax({
+				type: 'put',
+				url: '{{ url('/cartEdit') }}',
+				data:
+				{
+					'_token': $('input[name=_token]').val(),
+					'id': id,
+					'qty': numProduct
+				},
+				beforeSend: function() 
+				{
+					button.attr("disabled", true);
+					$('#loader').addClass('loader');
+					$('.checkout-review-order').addClass('loader_div');
+				},
+				success: function(data) 
+				{
+					$('#loader').removeClass('loader');
+					$('.checkout-review-order').removeClass('loader_div');
+
+					button.attr("disabled", false);
+					$('.amount').text('S/.'+data);
+					$('.amount').text('S/.'+data);
+				},
+				error: function(data) 
+				{
+					button.attr("disabled", false);
+					$('#loader').removeClass('loader');
+					$('.checkout-review-order').removeClass('loader_div');					
+					console.log(data);
+				},
+			});
+		}		
+  	});
+	$(document).on('click','.btn-num-product-down',function() 
+	{
+		var id = $(this).data('id');
+		var numProduct =  Number($(this).next().val());
+		var min = Number($(this).next().attr('min'));
+		var button = $(this);
+	
+		$.ajax({
+			type: 'put',
+			url: '{{ url('/cartEdit') }}',
+			data:
+			{
+				'_token': $('input[name=_token]').val(),
+				'id': id,
+				'qty': numProduct
+			},
+			beforeSend: function() 
+			{
+				button.attr("disabled", true);
+				$('#loader').addClass('loader');
+				$('.checkout-review-order').addClass('loader_div');
+			},
+			success: function(data) 
+			{
+				$('#loader').removeClass('loader');
+				$('.checkout-review-order').removeClass('loader_div');
+
+				button.attr("disabled", false);
+				$('.amount').text('S/.'+data);
+				$('.amount').text('S/.'+data);
+			},
+			error: function(data) 
+			{
+				button.attr("disabled", false);
+				$('#loader').removeClass('loader');
+				$('.checkout-review-order').removeClass('loader_div');					
+				console.log(data);
+			},
 		});
   	});
 </script>

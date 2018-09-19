@@ -150,44 +150,42 @@
 						Todos los Productos
 					</button>
             
-           @foreach ($categories as $category)
-             <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".{{ $category->id }}">
-              {{ $category->name}}
-             </button>
-           @endforeach
+					@foreach ($categories as $category)
+						<button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".{{ $category->id }}">
+						{{ $category->name}}
+						</button>
+					@endforeach
 				</div>           
 			</div>
 
 			<div class="row isotope-grid">     
-        @foreach ($products as $product)
-          <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item {{ $product->category->id }}">
-            <!-- Block2 -->
-            <div class="block2">
-              <div class="block2-pic hov-img0" >
-                <img src="{{ $product->image }}" alt="IMG-PRODUCT">
-              </div>
+				@foreach ($products as $product)
+					<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item {{ $product->category->id }}">
+						<!-- Block2 -->
+						<div class="block2">
+							<div class="block2-pic hov-img0" >
+								<a href="{{ url("/product/$product->id") }}"><img src="{{ $product->image }}" alt="IMG-PRODUCT"></a>
+							</div>
 
-              <div class="block2-txt flex-w flex-t p-t-14">
-                <div class="block2-txt-child1 flex-col-l ">
-                  <a href="{{ url("/product/$product->id") }}" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
-                    {{ $product->name }}
-                  </a>
-                   <span class="stext-105 cl3">
-                     S/. {{ $product->price }}
-                  </span>
-                </div>
-                <div class="block2-txt-child2 flex-r p-t-3">
-                  <a href="javascript:void(0)" class="hov-cl1 cl7 addCartProduct" data-id="{{ $product->id }}">
-                    <i class="zmdi zmdi-shopping-cart fs-25"></i>
-                  </a>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        @endforeach       
+							<div class="block2-txt flex-w flex-t p-t-14">
+								<div class="block2-txt-child1 flex-col-l ">
+									<a href="{{ url("/product/$product->id") }}" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+										{{ $product->name }}
+									</a>
+									<span class="stext-105 cl3">
+										S/. {{ $product->price }}
+									</span>
+								</div>
+								<div class="block2-txt-child2 flex-r p-t-3">
+									<a href="javascript:void(0)" class="hov-cl1 cl7 addCartProduct" data-id="{{ $product->id }}">
+										<i class="zmdi zmdi-shopping-cart fs-25"></i>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				@endforeach       
 			</div>
-
 		</div>
 	</section>
 @endsection

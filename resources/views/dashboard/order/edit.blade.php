@@ -1,4 +1,7 @@
 @extends('layouts.dashboard')
+@section('mycssfile')
+    <link href="{{ asset('vendor/elevatezoom/magnific-popup.css') }}" rel="stylesheet">
+@endsection
 @section('content')
 <!-- Bread crumb -->
 <div class="row page-titles card_ch">
@@ -136,11 +139,15 @@
                     <h4 class="card-title">Estado de Pedido</h4>
                     <div class="row">
                         <h5 class="my-3 col-md-7">Comprobante de pago</h5>
-                        <div class="col-md-6">
+                        <div class="col-md-6">          
                             @if($order->voucher)
-                                <img class="img-responsive" src="{{ $order->voucher }}">
+                               <a id="zoom_01" href="{{ $order->voucher }}">
+                                    <img  class="img-responsive" src="{{ $order->voucher }}" data-zoom-image="{{ $order->voucher }}">
+                                </a>
                             @else
-                                <img class="img-responsive" src="{{ asset('images/default.jpg') }}">
+                                <a id="zoom_01" href="{{ asset('images/default.jpg') }}">
+                                    <img  class="img-responsive" src="{{ asset('images/default.jpg') }}" data-zoom-image="{{ asset('images/default.jpg') }}">
+                                </a>
                             @endif
                         </div>
                         <div class="form-group col-md-6 my-3">
@@ -187,7 +194,14 @@
 </div>
 @endsection
 @section('myjsfile')
+    <script src="{{ asset('vendor/elevatezoom/jquery.magnific-popup.min.js') }}"></script>
 	<script>
+   
+        $("#zoom_01").magnificPopup({
+            type: 'image'
+        });
+                    
+
         $(document).on('click','#deleteProductoOrder',function()
         {
             var trDelete = $(this).parent();

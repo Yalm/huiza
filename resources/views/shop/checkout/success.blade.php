@@ -26,7 +26,7 @@
                     <ul class="row order_details_payment">
                         <li class="col-sm-2 col-5"><img width="50" src="{{ asset('images/interbank.png') }}"></li>
                         <li class="col-sm-3 col-7"><b>Banco:</b><br>Interbank</li>
-                        <li class="col-sm-5 col-12"><b>Número de cuenta:</b><br>2626156156161651</li>
+                        <li class="col-sm-5 col-12"><b>Número de cuenta:</b><br>5153108966975</li>
                     </ul>
 
                 

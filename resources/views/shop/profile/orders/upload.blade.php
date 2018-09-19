@@ -59,13 +59,9 @@
         title: '<strong class="my-2" >Cuentas de deposito </strong>',
         html:
             "<div class='row'>\
-                <div class='col-md-6'>\
-                    <img class='img-fluid' src='{{ url('images/bcp.jpg') }}'>\
-                    <h5 class='my-3'>Numero: <b>15151515151</b></h5>\
-                </div>\
-                <div class='col-md-6'>\
+                <div class='col-md-12'>\
                     <img class='img-fluid' src='{{ url('images/interbank.png') }}'>\
-                    <h5 class='my-3'>Numero: <b>15151515151</b></h5>\
+                    <h5 class='my-3'>Numero: <b>5153108966975</b></h5>\
                 </div>\
             </div>",
         confirmButtonClass: 'flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer',

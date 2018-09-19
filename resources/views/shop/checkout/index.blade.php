@@ -8,21 +8,6 @@
     	<!-- Content page -->
 	<section class="bg0 p-t-75 p-b-120">
 		<div class="container">
-			@if(!$customer->verifiedData())
-				<div class="row">
-					<div class="col-md-4">
-						<h2 class="cl5 font-weight-bold p-b-30">Completa tus Datos</h2> 
-					</div>
-					@include('shop.checkout.account')
-				</div>
-			@endif
-			@if (session('successCustomer'))
-				<div class="alert alert-success col-md-12">
-					{{ session('successCustomer') }}
-				</div>
-   		 	@endif
-
-
 			<form class="row" method="post" action="{{ url('checkout') }}" id="payment_end">
 				@csrf
 				<div class="col-md-6">
@@ -53,6 +38,9 @@
 		{
 			$('#payment_end').submit();            
 		}
+		else
+		{
+
 
 		
 		Culqi.settings({
@@ -65,7 +53,8 @@
 			Culqi.open();
 			e.preventDefault();
 			$('#payment_sucess').text('Finalizar');
-
+		}
+		
 	});
 
 	function culqi() 

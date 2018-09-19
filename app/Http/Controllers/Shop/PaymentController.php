@@ -11,9 +11,15 @@ use App\Order;
 use App\Product;
 use App\Document;
 use Culqi\Culqi;
+use App\User;
 
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\OrderRequest;
+use App\Http\Requests\CustomerRequest;
+
+use App\Mail\OrderMail;
+use App\Mail\NewOrderMail;
+use Mail;
 
 class PaymentController extends Controller
 {
@@ -30,6 +36,30 @@ class PaymentController extends Controller
             'documents' => $documents
         ]);
     }
+    public function completeAccount()
+    {
+        $customer = Customer::findOrFail(Auth::user()->id);
+        $documents = Document::all();
+
+        return view('shop.checkout.complete',[
+            'customer' => $customer,
+            'documents' => $documents
+        ]);
+    }
+    public function accountUpdate(CustomerRequest $request)
+    {
+        $customer = Auth('web')->user();
+ 
+        $customer->name =$request->name;
+        $customer->surnames = $request->surnames;
+        $customer->phone = $request->phone;
+        $customer->document_id = $request->document_id;
+        $customer->document_number = $request->document_number;
+        $customer->actived = 1;
+        $customer->save();
+        return redirect('/checkout');
+    }
+
     public function sucess(OrderRequest $request)
     {
         if($request->deposit)
@@ -101,21 +131,31 @@ class PaymentController extends Controller
 				$productFind->save();
 				
 				$meOrder->products()->attach($product->id,['quantity' => $product->qty]);
-			}
+            }
 		}
 		else if($request->deposit)
 		{
-            $meOrder->sendOrderNotification($meOrder);
-            
 			foreach(Cart::content() as $product) 
 			{
 				$meOrder->products()->attach($product->id,['quantity' => $product->qty]);
-			}
+            }
 		}
-        
+        Mail::to($meOrder->customer->email)->send(new OrderMail($meOrder));
+        $this->newOrderSend($order); 
         Cart::destroy(); 	
         
         return $meOrder;
-	}
+    }
+    
+    public function newOrderSend($order)
+	{
+        $users = User::all()->where('actived',1);
+
+        foreach($users as $user)
+        {
+            Mail::to($user)->send(new NewOrderMail($order));
+        }
+
+    }
 
 }

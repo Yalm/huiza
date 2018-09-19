@@ -59,7 +59,7 @@
             <!-- Block2 -->
             <div class="block2">
               <div class="block2-pic hov-img0" >
-                <img src="{{ $product->image }}" alt="IMG-PRODUCT">
+                <a href="{{ url("/product/$product->id") }}"><img src="{{ $product->image }}" alt="IMG-PRODUCT"></a>
               </div>
 
               <div class="block2-txt flex-w flex-t p-t-14">

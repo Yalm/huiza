@@ -38,6 +38,50 @@
                 </div>
             </div>
         </div>
+        <div class="col-md-4">
+            <div class="card card_ch">
+                <div class="row">
+                    <small class="col-md-4 text-center"><i class="fa fa-user f-s-80"></i></small>
+                    <div class="col-md-8 p-t-10 text-center">
+                        <h4>Top 9 mejores clientes</h4>
+                    </div>
+                    <form class="col-md-12" method="post" action="{{ url('admin/report/topCustomer') }}">
+                        @csrf
+                        <div class="form-group my-3">
+                            <label >Fecha Inicial</label>
+                            <input type="date" class="form-control" required value="{{ date('Y-m-d') }}" name="date_init">
+                        </div>
+                        <div class="form-group my-3">
+                            <label >Fecha Final</label>
+                            <input type="date" class="form-control" required value="{{ date('Y-m-d') }}" name="date_end">
+                        </div>
+                        <button type="submit" class="btn btn-primary"><i class="fa fa-eye f-s-20"></i> Ver</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card card_ch">
+                <div class="row">
+                    <small class="col-md-4 text-center"><i class="fa fa-shopping-basket f-s-80"></i></small>
+                    <div class="col-md-8 p-t-10 text-center">
+                        <h4>Ventas por fechas</h4>
+                    </div>
+                    <form class="col-md-12" method="post" action="{{ url('admin/report/purchases') }}">
+                        @csrf
+                        <div class="form-group my-3">
+                            <label >Fecha Inicial</label>
+                            <input type="date" class="form-control" required value="{{ date('Y-m-d') }}" name="date_init">
+                        </div>
+                        <div class="form-group my-3">
+                            <label >Fecha Final</label>
+                            <input type="date" class="form-control" required value="{{ date('Y-m-d') }}" name="date_end">
+                        </div>
+                        <button type="submit" class="btn btn-primary"><i class="fa fa-eye f-s-20"></i> Ver</a>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
     <!-- End PAge Content -->
 </div>

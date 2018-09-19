@@ -15,8 +15,8 @@ class CategoryProvider extends ServiceProvider
     public function boot()
     {
         view()->composer("*",function($view) {
-            $categories = Category::latest()->take(4)->get();
-            $view->with('categories',$categories);
+            $providerCategories = Category::latest()->take(4)->get();
+            $view->with('providerCategories',$providerCategories);
           });
     }
 

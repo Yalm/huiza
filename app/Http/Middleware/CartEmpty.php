@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Support\Facades\Auth;
 
 class CartEmpty
 {
@@ -20,6 +21,10 @@ class CartEmpty
         if($cart->isEmpty())
         {
             return redirect('/cart');
+        }
+        if(!Auth('web')->user()->verifiedData())
+        {
+            return redirect('complete_account');
         }
 
         return $next($request);

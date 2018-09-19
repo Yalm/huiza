@@ -229,7 +229,7 @@
 					</h4>
 
 					<ul>
-					@foreach ($categories as $category)
+					@foreach ($providerCategories as $category)
 						<li class="p-b-10">
 							<a href="{{ url("/shop/$category->name") }}" class="stext-107 cl7 hov-cl1 trans-04">
 								{{ $category->name }}
@@ -246,26 +246,19 @@
 
 					<ul>
 						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
+							<a href="{{ url('profile/orders') }}" class="stext-107 cl7 hov-cl1 trans-04">
 								Pedidos
 							</a>
 						</li>
 
 						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Devoluciones
+							<a href="{{ url('/terms_and_conditions') }}" class="stext-107 cl7 hov-cl1 trans-04">
+								Terms & Condiciones
 							</a>
 						</li>
-
 						<li class="p-b-10">
 							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								Envio
-							</a>
-						</li>
-
-						<li class="p-b-10">
-							<a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-								FAQs
+								Política de privacidad
 							</a>
 						</li>
 					</ul>
@@ -283,14 +276,6 @@
 					<div class="p-t-27">
 						<a href="https://www.facebook.com/Comercial-huiza-556620077843675/" target="_blank" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
 							<i class="fa fa-facebook"></i>
-						</a>
-
-						<a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
-							<i class="fa fa-instagram"></i>
-						</a>
-
-						<a href="#" class="fs-18 cl7 hov-cl1 trans-04 m-r-16">
-							<i class="fa fa-pinterest-p"></i>
 						</a>
 					</div>
 				</div>
