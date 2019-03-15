@@ -8,17 +8,18 @@ use App\Product;
 use App\Category;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Mail;
+use Illuminate\Support\Facades\Storage;
 
 class ShopController extends Controller
 {
-    public function index() 
+    public function index()
     {
         $products = Product::where('stock', '>', 0)->latest()->take(8)->get();
         $categories = Category::latest()->take(6)->get();
 
-        $products->each(function($products)
+        $products->each(function($product)
         {
-            $products->image = url($products->image);
+            $product->image = Storage::disk('s3')->url($product->image);
         });
 
         return view('shop.welcome',[
@@ -27,10 +28,10 @@ class ShopController extends Controller
         ]);
     }
 
-    public function show($id)  
+    public function show($id)
     {
         $product = Product::findOrFail($id);
-        $product->image = url($product->image);
+        $product->image = Storage::disk('s3')->url($product->image);
 
         return view('shop.show_product',
         [
@@ -38,14 +39,14 @@ class ShopController extends Controller
         ]);
     }
 
-    public function shop() 
+    public function shop()
     {
         $products = Product::where('stock', '>', 0)->latest()->paginate(12);
         $categories = Category::all();
 
-        $products->each(function($products)
+        $products->each(function($product)
         {
-            $products->image = url($products->image);
+            $product->image = Storage::disk('s3')->url($product->image);
         });
 
         return view('shop.shop',[
@@ -54,18 +55,18 @@ class ShopController extends Controller
         ]);
     }
 
-    public function about() 
-    {   
+    public function about()
+    {
         return view('shop.about');
     }
-    
-    public function contact() 
-    {   
+
+    public function contact()
+    {
         return view('shop.contact');
     }
-    
-    public function terms() 
-    {   
+
+    public function terms()
+    {
         return view('shop.terms_and_conditions');
     }
 
@@ -81,17 +82,17 @@ class ShopController extends Controller
             $message->to('i2917724@continental.edu.pe', 'Admin')->subject('Mensaje de Contáctanos');
         });
         return back()->with('success', '¡Gracias por contactarnos!');
-    
+
     }
-    
-    public function search(Request $request) 
-    {   
+
+    public function search(Request $request)
+    {
         $query = $request->input('query');
         $products = Product::with('category')->where('name' ,'LIKE', "%$query%")->paginate(10);
 
-        $products->each(function($products)
+        $products->each(function($product)
         {
-            $products->image = url($products->image);
+            $product->image = Storage::disk('s3')->url($product->image);
         });
 
         return view('shop.shop',[
@@ -99,15 +100,16 @@ class ShopController extends Controller
         ]);
     }
 
-    public function searchCategory($name)    
+    public function searchCategory($name)
     {
         $category = Category::SearchCategory($name)->first();
         $products = $category->products()->paginate(12);
 
-        $products->each(function($products)
+        $products->each(function($product)
         {
-            $products->image = url($products->image);
+            $product->image = Storage::disk('s3')->url($product->image);
         });
+
         $categories = Category::all();
 
         return view('shop.shop',[

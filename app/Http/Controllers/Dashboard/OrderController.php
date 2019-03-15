@@ -9,6 +9,7 @@ use App\State;
 use App\Product;
 use App\Http\Requests\OrderRequest;
 use App\Document;
+use Illuminate\Support\Facades\Storage;
 
 class OrderController extends Controller
 {
@@ -23,19 +24,19 @@ class OrderController extends Controller
     {
         $order = Order::findOrFail($id);
         $documents = Document::all();
-        
-        
+
+
         if($order->voucher)
         {
-            $order->voucher = url($order->voucher);        
+            $order->voucher = Storage::disk('s3')->url($order->voucher);
         }
 
         $states = State::all();
-        
+
         return view('dashboard.order.edit',[
             'order' => $order,
             'states' => $states,
-            'documents' => $documents,            
+            'documents' => $documents,
         ]);
     }
     public function show($id)
@@ -55,7 +56,7 @@ class OrderController extends Controller
         $order->surnames = $request->surnames;
         $order->phone = $request->phone;
         $order->note_customer = $request->note_customer;
-        
+
         if($order->state_id != 2)
         {
             if($request->states == 2)
@@ -76,7 +77,7 @@ class OrderController extends Controller
                 }
             }
         }
-        
+
 
         $order->state_id = $request->states;
         $order->save();

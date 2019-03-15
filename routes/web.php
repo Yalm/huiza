@@ -95,8 +95,6 @@ Route::prefix('admin')->group(function ()
         Route::post('report/topProduct','Dashboard\ReportController@topProduct');
         Route::post('report/topCustomer','Dashboard\ReportController@topCustomer');
         Route::post('report/purchases','Dashboard\ReportController@purchases');
-        
-        
     });
 });
 

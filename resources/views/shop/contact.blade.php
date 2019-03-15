@@ -83,7 +83,7 @@
 							</span>
 
 							<p class="stext-115 cl1 size-213 p-t-18">
-								<a class="cl5 hov-cl1 trans-04" href="mailto:soporte@comercialhuizaperu.com">soporte@comercialhuizaperu.com</a>
+								<a class="cl5 hov-cl1 trans-04" href="mailto:ventas@comercialhuiza.com">ventas@comercialhuiza.com</a>
 							</p>
 						</div>
 					</div>

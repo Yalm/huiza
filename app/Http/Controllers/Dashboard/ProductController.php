@@ -7,6 +7,7 @@ use App\Category;
 use Image;
 use App\Http\Requests\ProductRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -14,6 +15,9 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::all();
+        $products->each(function($product){
+            $product->image = Storage::disk('s3')->url($product->image);
+        });
         return view('dashboard.product.index',[
           'products' => $products,
         ]);
@@ -29,18 +33,19 @@ class ProductController extends Controller
 
     public function store(ProductRequest $request)
     {
-      $imagen =$request->file('image');
-      $NombreImagen = $imagen->hashName();
-      Image::make($imagen)->resize(1200,1485)->save("images/products/$NombreImagen");
+        $image = $request->file('image');
+        $name = $image->hashName();
+        $image_thumb = Image::make($image)->resize(1200,1485)->stream();
+        $path = Storage::disk('s3')->put("ik9e3iowcy4l/products/$name", $image_thumb->__toString(),'public');
 
         Product::create([
-          'name' =>$request->name,
-          'price' =>$request->price,
-          'image' =>"images/products/$NombreImagen",
-          'stock' =>$request->stock,
-          'description' =>$request->description,
-          'characteristics' =>$request->characteristics,
-          'category_id' =>$request->category
+            'name' => $request->name,
+            'price' => $request->price,
+            'image' => "products/$name",
+            'stock' => $request->stock,
+            'description' => $request->description,
+            'characteristics' => $request->characteristics,
+            'category_id' => $request->category
         ]);
         return redirect('admin/product')->with('success','Su producto ha sido creado con éxito.');
     }
@@ -64,13 +69,11 @@ class ProductController extends Controller
     public function update(ProductRequest $request, $id)
     {
         $product = Product::findOrFail($id);
-        if($request->hasFile('image')) 
+        if($request->hasFile('image'))
         {
-          \File::delete($product->image);
-          $image =$request->file('image');
-          $NombreImagen = $image->hashName();
-          Image::make($image)->resize(1200,1485)->save("images/products/$NombreImagen");
-          $product->image ="images/products/$NombreImagen";
+            Storage::disk('s3')->delete($product->image);
+            $image_thumb = Image::make($image)->resize(1200,1485)->stream();
+            $product->image = Storage::disk('s3')->put('products', $image_thumb->__toString());
         }
         $product->name =$request->name;
         $product->price = $request->price;
@@ -93,8 +96,7 @@ class ProductController extends Controller
         {
             return back()->with('error','¡Error!, Su producto esta relacionado.');
         }
-
-        \File::delete($product->image);
+        Storage::disk('s3')->delete($product->image);
         $product->delete();
         return back()->with('success','Su producto ha sido eliminado con éxito.');
     }

@@ -38,12 +38,12 @@
                                   <th>Acciones</th>
                                 </tr>
                             </thead>
-                            <tbody>         
+                            <tbody>
                      			@foreach ($products as $product)
 									<tr>
 										<td>{{ $product->name }}</td>
 										<td>{{ "S/.$product->price" }}</td>
-										<td><img src="{{ asset($product->image) }}" width="50"></td>
+										<td><img src="{{ $product->image }}" width="50"></td>
 										<td>{{ $product->stock }}</td>
 										<td>{{ $product->category->name }}</td>
 										<td class="form-inline">
@@ -72,7 +72,7 @@
 	<script src="{{ asset('js/lib/datatables/datatables.min.js') }}"></script>
 	<script src="{{ asset('js/lib/datatables/datatables-init.js') }}"></script>
     <script>
-        $(doucument).on('click','#deleteProduct', function() 
+        $(document).on('click','#deleteProduct', function()
         {
             var urlSend = $(this).data('url');
             swal({
@@ -88,12 +88,12 @@
                 },
                 function(isConfirm)
                 {
-                    if (isConfirm) 
+                    if (isConfirm)
                     {
                         $('#deleteProductForm').attr('action', urlSend);
                         $('#deleteProductForm').trigger('submit');
                     }
-                    else 
+                    else
                     {
                         swal("Cancelado !!", "Oye, tu producto esta seguro !!", "error");
                     }

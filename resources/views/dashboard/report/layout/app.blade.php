@@ -321,14 +321,14 @@
 			<figure>
 				<img class="logo" src="{{ url('images/logo.png') }}" alt="">
 			</figure>
-            
+
 			<div class="company-info">
 				<h2 class="title">&nbsp;</h2>
 				<span>Huanuco 365, Huancayo</span>
 				<span class="line"></span>
 				<a class="phone" href="tel:602-519-0450">(064) 519-0450</a>
 				<span class="line"></span>
-				<a class="email" href="soporte@comercialhuizaperu.com">soporte@comercialhuizaperu.com</a>
+				<a class="email" href="ventas@comercialhuiza.com">ventas@comercialhuiza.com</a>
 			</div>
 		</div>
 	</header>

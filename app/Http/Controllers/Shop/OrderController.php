@@ -5,10 +5,10 @@ namespace App\Http\Controllers\Shop;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Order;
-use Image;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use App\Http\Requests\OrderRequest;
 use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\Storage;
 
 class OrderController extends Controller
 {
@@ -46,16 +46,15 @@ class OrderController extends Controller
         $this->validate($request,[
 			'voucher' => 'image',
         ]);
-        
-        if($request->hasFile('voucher')) 
+
+        if($request->hasFile('voucher'))
         {
             $order = Order::findOrFail($id);
 
-            $voucher =$request->file('voucher');
-            $voucherHash = $voucher->hashName();
-            Image::make($voucher)->save("images/vouchers/$voucherHash");
+            $voucher = $request->file('voucher');
+            Storage::disk('s3')->put('ik9e3iowcy4l/vouchers', $voucher,'public');
 
-            $order->voucher = "images/vouchers/$voucherHash";
+            $order->voucher = 'vouchers/'.$voucher->hashName();
             $order->state_id = '4';
             $order->save();
 
@@ -63,13 +62,13 @@ class OrderController extends Controller
         }
         return back();
     }
-    
+
     public function show($id)
-    {   
+    {
         $data = Crypt::decrypt($id);
-        $order = Order::findOrFail($data['id']); 
+        $order = Order::findOrFail($data['id']);
         $note = $order->notes()->latest()->take(1)->first();
-        
+
         return view('shop.profile.orders.show',[
             'order' => $order,
             'note' => $note

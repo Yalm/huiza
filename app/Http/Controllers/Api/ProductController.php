@@ -11,12 +11,12 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::all();
-        $products->each(function($products)
+        $products->each(function($product)
         {
-            $products->category;
-            $products->image = url($products->image);
+            $product->category;
+            $product->image = url($product->image);
         });
-        return   $products;     
+        return   $products;
     }
 }
 
